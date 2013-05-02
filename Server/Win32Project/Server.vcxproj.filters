@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{dd480b17-8f5b-43bf-9353-e427f1d2b97b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{77104e64-7fe7-49b8-a71b-0d5181aa28da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\win32">
+      <UniqueIdentifier>{86d29735-e03c-45db-b458-9e19edab3f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\linux">
+      <UniqueIdentifier>{47d38ba3-a299-4ce7-8c2d-301767ca556e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{5364fa1d-899b-42d0-b857-25a5156cb67b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\cppconn">
+      <UniqueIdentifier>{65bf01a2-cd09-44ce-8b0e-8b54e657f390}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\DB\LoginDB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\DBConfig.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Platform\win32\platform_win32.cpp">
+      <Filter>platform\win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\DB\LoginDB.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\DBConfig.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Platform\platform.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\build_config.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\config.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\connection.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\datatype.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\driver.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\exception.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\metadata.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\parameter_metadata.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\prepared_statement.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\resultset.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\resultset_metadata.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\sqlstring.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\statement.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cppconn\warning.h">
+      <Filter>include\cppconn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\mysql_connection.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\mysql_driver.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -18,3 +18,10 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+*.opensdf
+*.sdf
+*.suo
+*.user
+Debug/
+ipch/
+Release/
