@@ -17,7 +17,7 @@
 #include <netinet/in.h>
 #endif
 
-// #define TEST_NATIVE_CLIENT_ON_WINDOWS
+ //#define TEST_NATIVE_CLIENT_ON_WINDOWS
 
 #ifdef TEST_NATIVE_CLIENT_ON_WINDOWS
 #define __native_client__

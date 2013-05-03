@@ -23,6 +23,7 @@ using namespace RakNet;
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
+#include <netdb.h>
 #endif
 
 #ifdef TEST_NATIVE_CLIENT_ON_WINDOWS

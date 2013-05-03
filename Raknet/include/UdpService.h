@@ -1,5 +1,6 @@
 #pragma once
 #include "SignaledEvent.h"
+#include "RakThread.h"
 
 namespace RakNet
 {
@@ -15,7 +16,7 @@ namespace RakNet
 		void Stop();
 	protected:
 		virtual void Update(const RakNet::Packet* pack) = 0;
-		static unsigned int __stdcall ThreadFunc(void* param);
+		static  RAK_THREAD_DECLARATION(ThreadFunc);
 	protected:
 		RakNet::RakPeerInterface* mServer;
 		RakNet::SignaledEvent mQuitEvent;

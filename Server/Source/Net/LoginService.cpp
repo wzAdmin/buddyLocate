@@ -42,8 +42,8 @@ namespace Net
 	void LoginService::Login( const RakNet::Packet* pack )
 	{
 		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
-		char* user = NULL;
-		char* pswd = NULL;
+		char user[256] ;
+		char pswd[256] ;
 		bst.Read(user);
 		bst.Read(pswd);
 		DB::LoginDB lgdb;
@@ -58,15 +58,15 @@ namespace Net
 	void LoginService::Register( const RakNet::Packet* pack)
 	{	
 		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
-		char* user = NULL;
-		char* pswd = NULL;
+		char user[256] ;
+		char pswd[256] ;
 		bst.Read(user);
 		bst.Read(pswd);
 		DB::LoginDB lgdb;
 		LoginError err = lgdb.Register(user , pswd);	
 		
 		RakNet::BitStream bstsd;
-		bstsd.Write((RakNet::MessageID)NETMSG_LOGIN);
+		bstsd.Write((RakNet::MessageID)NETMSG_REGISTE);
 		bstsd.Write((unsigned char) err);
 		mServer->Send(&bstsd,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,pack->systemAddress,false);
 	}

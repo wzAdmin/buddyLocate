@@ -1,0 +1,20 @@
+<project name="Graphic" default="build_native" basedir=".">
+	<description>
+        Graphic Android SDK Ant build file
+    </description>
+
+	<property name="version" value="1.0.0"/>
+
+	<!-- compile native code -->
+	<target name = "build_native" >
+		<exec executable = "D:\adt-bundle-windows\cygwin\bin\bash.exe">
+			<arg value = "--login"/>
+			<arg value = "-c"/>
+			<arg value = "/cygdrive/E/buddyLocate/Client/Android/compile.sh"/>
+		</exec>
+	</target>
+	<target name = "clear">
+       <delete dir ="libs"/>
+       <delete dir ="obj"/>
+	</target>
+</project>

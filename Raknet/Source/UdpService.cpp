@@ -24,6 +24,7 @@ namespace RakNet
 		sdp.socketFamily = AF_INET;
 		RakNet::StartupResult res = mServer->Startup(MaxConnectionNum,&sdp,1);
 		mServer->SetMaximumIncomingConnections(MaxConnectionNum);
+		mServer->SetOccasionalPing(true);
 		RakAssert(res == RakNet::RAKNET_ALREADY_STARTED || res == RakNet::RAKNET_STARTED);
 		RakNet::RakThread::Create(ThreadFunc,this);
 		while(!bRuning)
@@ -31,9 +32,9 @@ namespace RakNet
 		printf("prot::%d Started\n",Port);
 	}
 
-	unsigned int __stdcall UdpService::ThreadFunc( void* param)
+	RAK_THREAD_DECLARATION(UdpService::ThreadFunc)
 	{
-		UdpService* LgS = (UdpService*)param;
+		UdpService* LgS = (UdpService*)arguments;
 		LgS->bRuning = true;
 		RakNet::Packet* p = NULL;
 		while (LgS->bRuning)

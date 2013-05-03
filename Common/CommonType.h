@@ -6,8 +6,8 @@ namespace Common
 	enum LoginError
 	{
 		LGE_none,
-		LGE_user_notexsit,
-		LGE_user_exsited,
+		LGE_user_notexist,
+		LGE_user_existed,
 		LGE_password_incorrect,
 		LGE_unkown
 	};

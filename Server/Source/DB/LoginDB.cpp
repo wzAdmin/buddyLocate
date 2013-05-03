@@ -38,7 +38,7 @@ namespace DB
 					er = LGE_password_incorrect;
 			}
 			else
-				er = LGE_user_notexsit;
+				er = LGE_user_notexist;
 		}
 
 		catch(const sql::SQLException& e)
@@ -69,7 +69,7 @@ namespace DB
 			sql::ResultSet* res = stmt->executeQuery(sqlstmt);
 			if(res->next())
 			{
-				re = LGE_user_exsited;
+				re = LGE_user_existed;
 			}
 			else
 			{
@@ -94,7 +94,7 @@ namespace DB
 	sql::Connection* LoginDB::connect()
 	{
 		sql::mysql::MySQL_Driver* driver = sql::mysql::get_driver_instance();
-		sql::Connection* conn  = driver->connect("localhost:3307","root","root");
+		sql::Connection* conn  = driver->connect("localhost:3306","root","root");
 		conn->setSchema("Buddy");
 		return conn;
 	}
