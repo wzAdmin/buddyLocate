@@ -31,7 +31,7 @@ namespace DB
 			reshead = res;
 			if(res->next())
 			{
-				if(res->getString("pswd") == pswd)
+				if(res->getString("pswd") == sql::SQLString(pswd,strlen(pswd)))
 					er =  error_none;
 				else
 					er = error_password_incorrect;

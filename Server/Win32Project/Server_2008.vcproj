@@ -233,6 +233,18 @@
 				>
 			</Filter>
 		</Filter>
+		<Filter
+			Name="Net"
+			>
+			<File
+				RelativePath="..\Source\Net\LoginService.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Source\Net\LoginService.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
