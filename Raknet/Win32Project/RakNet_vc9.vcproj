@@ -44,7 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="./../../Source;&quot;./../../DependentExtensions/openssl-1.0.0d/include&quot;;./../../DependentExtensions"
+				AdditionalIncludeDirectories="../include"
 				PreprocessorDefinitions="_CRT_SECURE_NO_DEPRECATE;WIN32;_DEBUG;_RAKNET_DLL;_CRT_NONSTDC_NO_DEPRECATE"
 				MinimalRebuild="true"
 				ExceptionHandling="0"
@@ -803,615 +803,615 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\Source\_FindFirst.h"
+				RelativePath="..\include\_FindFirst.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\AutopatcherPatchContext.h"
+				RelativePath="..\include\AutopatcherPatchContext.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\AutopatcherRepositoryInterface.h"
+				RelativePath="..\include\AutopatcherRepositoryInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Base64Encoder.h"
+				RelativePath="..\include\Base64Encoder.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\BitStream.h"
+				RelativePath="..\include\BitStream.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CCRakNetSlidingWindow.h"
+				RelativePath="..\include\CCRakNetSlidingWindow.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CCRakNetUDT.h"
+				RelativePath="..\include\CCRakNetUDT.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CheckSum.h"
+				RelativePath="..\include\CheckSum.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CloudClient.h"
+				RelativePath="..\include\CloudClient.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CloudCommon.h"
+				RelativePath="..\include\CloudCommon.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CloudServer.h"
+				RelativePath="..\include\CloudServer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\CommandParserInterface.h"
+				RelativePath="..\include\CommandParserInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ConnectionGraph2.h"
+				RelativePath="..\include\ConnectionGraph2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ConsoleServer.h"
+				RelativePath="..\include\ConsoleServer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DataCompressor.h"
+				RelativePath="..\include\DataCompressor.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DirectoryDeltaTransfer.h"
+				RelativePath="..\include\DirectoryDeltaTransfer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_BinarySearchTree.h"
+				RelativePath="..\include\DS_BinarySearchTree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_BPlusTree.h"
+				RelativePath="..\include\DS_BPlusTree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_BytePool.h"
+				RelativePath="..\include\DS_BytePool.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_ByteQueue.h"
+				RelativePath="..\include\DS_ByteQueue.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Hash.h"
+				RelativePath="..\include\DS_Hash.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Heap.h"
+				RelativePath="..\include\DS_Heap.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_HuffmanEncodingTree.h"
+				RelativePath="..\include\DS_HuffmanEncodingTree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_HuffmanEncodingTreeFactory.h"
+				RelativePath="..\include\DS_HuffmanEncodingTreeFactory.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_HuffmanEncodingTreeNode.h"
+				RelativePath="..\include\DS_HuffmanEncodingTreeNode.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_LinkedList.h"
+				RelativePath="..\include\DS_LinkedList.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_List.h"
+				RelativePath="..\include\DS_List.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Map.h"
+				RelativePath="..\include\DS_Map.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_MemoryPool.h"
+				RelativePath="..\include\DS_MemoryPool.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Multilist.h"
+				RelativePath="..\include\DS_Multilist.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_OrderedChannelHeap.h"
+				RelativePath="..\include\DS_OrderedChannelHeap.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_OrderedList.h"
+				RelativePath="..\include\DS_OrderedList.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Queue.h"
+				RelativePath="..\include\DS_Queue.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_QueueLinkedList.h"
+				RelativePath="..\include\DS_QueueLinkedList.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_RangeList.h"
+				RelativePath="..\include\DS_RangeList.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Table.h"
+				RelativePath="..\include\DS_Table.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_ThreadsafeAllocatingQueue.h"
+				RelativePath="..\include\DS_ThreadsafeAllocatingQueue.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_Tree.h"
+				RelativePath="..\include\DS_Tree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DS_WeightedGraph.h"
+				RelativePath="..\include\DS_WeightedGraph.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\DynDNS.h"
+				RelativePath="..\include\DynDNS.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\EmailSender.h"
+				RelativePath="..\include\EmailSender.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\EmptyHeader.h"
+				RelativePath="..\include\EmptyHeader.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\EpochTimeToString.h"
+				RelativePath="..\include\EpochTimeToString.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Export.h"
+				RelativePath="..\include\Export.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FileList.h"
+				RelativePath="..\include\FileList.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FileListNodeContext.h"
+				RelativePath="..\include\FileListNodeContext.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FileListTransfer.h"
+				RelativePath="..\include\FileListTransfer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FileListTransferCBInterface.h"
+				RelativePath="..\include\FileListTransferCBInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FileOperations.h"
+				RelativePath="..\include\FileOperations.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FormatString.h"
+				RelativePath="..\include\FormatString.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\FullyConnectedMesh2.h"
+				RelativePath="..\include\FullyConnectedMesh2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Getche.h"
+				RelativePath="..\include\Getche.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Gets.h"
+				RelativePath="..\include\Gets.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\GetTime.h"
+				RelativePath="..\include\GetTime.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\gettimeofday.h"
+				RelativePath="..\include\gettimeofday.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\GridSectorizer.h"
+				RelativePath="..\include\GridSectorizer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\HTTPConnection.h"
+				RelativePath="..\include\HTTPConnection.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\HTTPConnection2.h"
+				RelativePath="..\include\HTTPConnection2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\IncrementalReadInterface.h"
+				RelativePath="..\include\IncrementalReadInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\InternalPacket.h"
+				RelativePath="..\include\InternalPacket.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Itoa.h"
+				RelativePath="..\include\Itoa.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Kbhit.h"
+				RelativePath="..\include\Kbhit.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\LinuxStrings.h"
+				RelativePath="..\include\LinuxStrings.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\LocklessTypes.h"
+				RelativePath="..\include\LocklessTypes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\LogCommandParser.h"
+				RelativePath="..\include\LogCommandParser.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\MessageFilter.h"
+				RelativePath="..\include\MessageFilter.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\MessageIdentifiers.h"
+				RelativePath="..\include\MessageIdentifiers.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\MTUSize.h"
+				RelativePath="..\include\MTUSize.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NativeFeatureIncludes.h"
+				RelativePath="..\include\NativeFeatureIncludes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NativeFeatureIncludesOverrides.h"
+				RelativePath="..\include\NativeFeatureIncludesOverrides.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NativeTypes.h"
+				RelativePath="..\include\NativeTypes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NatPunchthroughClient.h"
+				RelativePath="..\include\NatPunchthroughClient.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NatPunchthroughServer.h"
+				RelativePath="..\include\NatPunchthroughServer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NatTypeDetectionClient.h"
+				RelativePath="..\include\NatTypeDetectionClient.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NatTypeDetectionCommon.h"
+				RelativePath="..\include\NatTypeDetectionCommon.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NatTypeDetectionServer.h"
+				RelativePath="..\include\NatTypeDetectionServer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NetworkIDManager.h"
+				RelativePath="..\include\NetworkIDManager.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\NetworkIDObject.h"
+				RelativePath="..\include\NetworkIDObject.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketConsoleLogger.h"
+				RelativePath="..\include\PacketConsoleLogger.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketFileLogger.h"
+				RelativePath="..\include\PacketFileLogger.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketizedTCP.h"
+				RelativePath="..\include\PacketizedTCP.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketLogger.h"
+				RelativePath="..\include\PacketLogger.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketOutputWindowLogger.h"
+				RelativePath="..\include\PacketOutputWindowLogger.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketPool.h"
+				RelativePath="..\include\PacketPool.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PacketPriority.h"
+				RelativePath="..\include\PacketPriority.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PluginInterface2.h"
+				RelativePath="..\include\PluginInterface2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PS3Includes.h"
+				RelativePath="..\include\PS3Includes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\PS4Includes.h"
+				RelativePath="..\include\PS4Includes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Rackspace.h"
+				RelativePath="..\include\Rackspace.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakAlloca.h"
+				RelativePath="..\include\RakAlloca.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakAssert.h"
+				RelativePath="..\include\RakAssert.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakMemoryOverride.h"
+				RelativePath="..\include\RakMemoryOverride.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetCommandParser.h"
+				RelativePath="..\include\RakNetCommandParser.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetDefines.h"
+				RelativePath="..\include\RakNetDefines.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetDefinesOverrides.h"
+				RelativePath="..\include\RakNetDefinesOverrides.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetSmartPtr.h"
+				RelativePath="..\include\RakNetSmartPtr.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetSocket.h"
+				RelativePath="..\include\RakNetSocket.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetSocket2.h"
+				RelativePath="..\include\RakNetSocket2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetStatistics.h"
+				RelativePath="..\include\RakNetStatistics.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetTime.h"
+				RelativePath="..\include\RakNetTime.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetTransport2.h"
+				RelativePath="..\include\RakNetTransport2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetTypes.h"
+				RelativePath="..\include\RakNetTypes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakNetVersion.h"
+				RelativePath="..\include\RakNetVersion.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakPeer.h"
+				RelativePath="..\include\RakPeer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakPeerInterface.h"
+				RelativePath="..\include\RakPeerInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakSleep.h"
+				RelativePath="..\include\RakSleep.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakString.h"
+				RelativePath="..\include\RakString.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakThread.h"
+				RelativePath="..\include\RakThread.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RakWString.h"
+				RelativePath="..\include\RakWString.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Rand.h"
+				RelativePath="..\include\Rand.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ReadyEvent.h"
+				RelativePath="..\include\ReadyEvent.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RefCountedObj.h"
+				RelativePath="..\include\RefCountedObj.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RelayPlugin.h"
+				RelativePath="..\include\RelayPlugin.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ReliabilityLayer.h"
+				RelativePath="..\include\ReliabilityLayer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ReplicaEnums.h"
+				RelativePath="..\include\ReplicaEnums.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ReplicaManager3.h"
+				RelativePath="..\include\ReplicaManager3.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\Router2.h"
+				RelativePath="..\include\Router2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\RPC4Plugin.h"
+				RelativePath="..\include\RPC4Plugin.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SecureHandshake.h"
+				RelativePath="..\include\SecureHandshake.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SendToThread.h"
+				RelativePath="..\include\SendToThread.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SHA1.h"
+				RelativePath="..\include\SHA1.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SignaledEvent.h"
+				RelativePath="..\include\SignaledEvent.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SimpleMutex.h"
+				RelativePath="..\include\SimpleMutex.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SimpleTCPServer.h"
+				RelativePath="..\include\SimpleTCPServer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SingleProducerConsumer.h"
+				RelativePath="..\include\SingleProducerConsumer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SocketDefines.h"
+				RelativePath="..\include\SocketDefines.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SocketIncludes.h"
+				RelativePath="..\include\SocketIncludes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SocketLayer.h"
+				RelativePath="..\include\SocketLayer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\StatisticsHistory.h"
+				RelativePath="..\include\StatisticsHistory.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\StringCompressor.h"
+				RelativePath="..\include\StringCompressor.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\StringTable.h"
+				RelativePath="..\include\StringTable.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\SuperFastHash.h"
+				RelativePath="..\include\SuperFastHash.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TableSerializer.h"
+				RelativePath="..\include\TableSerializer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TCPInterface.h"
+				RelativePath="..\include\TCPInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TeamBalancer.h"
+				RelativePath="..\include\TeamBalancer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TeamManager.h"
+				RelativePath="..\include\TeamManager.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TelnetTransport.h"
+				RelativePath="..\include\TelnetTransport.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ThreadPool.h"
+				RelativePath="..\include\ThreadPool.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\ThreadsafePacketLogger.h"
+				RelativePath="..\include\ThreadsafePacketLogger.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TransportInterface.h"
+				RelativePath="..\include\TransportInterface.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\TwoWayAuthentication.h"
+				RelativePath="..\include\TwoWayAuthentication.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\UDPForwarder.h"
+				RelativePath="..\include\UDPForwarder.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\UDPProxyClient.h"
+				RelativePath="..\include\UDPProxyClient.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\UDPProxyCommon.h"
+				RelativePath="..\include\UDPProxyCommon.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\UDPProxyCoordinator.h"
+				RelativePath="..\include\UDPProxyCoordinator.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\UDPProxyServer.h"
+				RelativePath="..\include\UDPProxyServer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\VariableDeltaSerializer.h"
+				RelativePath="..\include\VariableDeltaSerializer.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\VariableListDeltaTracker.h"
+				RelativePath="..\include\VariableListDeltaTracker.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\VariadicSQLParser.h"
+				RelativePath="..\include\VariadicSQLParser.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\VitaIncludes.h"
+				RelativePath="..\include\VitaIncludes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\WindowsIncludes.h"
+				RelativePath="..\include\WindowsIncludes.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\WSAStartupSingleton.h"
+				RelativePath="..\include\WSAStartupSingleton.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Source\XBox360Includes.h"
+				RelativePath="..\include\XBox360Includes.h"
 				>
 			</File>
 		</Filter>
