@@ -31,6 +31,9 @@
     <Filter Include="include\cppconn">
       <UniqueIdentifier>{65bf01a2-cd09-44ce-8b0e-8b54e657f390}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Net">
+      <UniqueIdentifier>{a7a3bda4-0b88-4280-b57a-26cdd685546e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Main.cpp">
@@ -44,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="..\Source\Platform\win32\platform_win32.cpp">
       <Filter>platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Net\LoginService.cpp">
+      <Filter>Net</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="..\include\mysql_driver.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Net\LoginService.h">
+      <Filter>Net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

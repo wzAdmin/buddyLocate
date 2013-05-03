@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>RakNet</ProjectName>
+    <ProjectGuid>{BC75CD23-CB75-4233-A305-B7328825A9A5}</ProjectGuid>
+    <RootNamespace>DLL</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)Lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)Lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;WIN32;_DEBUG;_RAKNET_DLL;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(OutDir)$(ProjectName).dll $(SolutionDir)..\\build\\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;WIN32;_RELEASE;_RAKNET_DLL;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(OutDir)$(ProjectName).dll $(SolutionDir)..\\build\\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./../../Source;./../../DependentExtensions/openssl-1.0.0d/include;./../../DependentExtensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;WIN32;_DEBUG;_RAKNET_DLL;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).dll</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>./../../Source;./../../DependentExtensions/openssl-1.0.0d/include;./../../DependentExtensions;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;WIN32;_RELEASE;_RAKNET_DLL;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).dll</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(SolutionName)_$(ProjectName)_$(Configuration)_$(Platform).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\_FindFirst.cpp" />
+    <ClCompile Include="..\Source\Base64Encoder.cpp" />
+    <ClCompile Include="..\Source\BitStream.cpp" />
+    <ClCompile Include="..\Source\CCRakNetSlidingWindow.cpp" />
+    <ClCompile Include="..\Source\CCRakNetUDT.cpp" />
+    <ClCompile Include="..\Source\CheckSum.cpp" />
+    <ClCompile Include="..\Source\CloudClient.cpp" />
+    <ClCompile Include="..\Source\CloudCommon.cpp" />
+    <ClCompile Include="..\Source\CloudServer.cpp" />
+    <ClCompile Include="..\Source\CommandParserInterface.cpp" />
+    <ClCompile Include="..\Source\ConnectionGraph2.cpp" />
+    <ClCompile Include="..\Source\ConsoleServer.cpp" />
+    <ClCompile Include="..\Source\DataCompressor.cpp" />
+    <ClCompile Include="..\Source\DirectoryDeltaTransfer.cpp" />
+    <ClCompile Include="..\Source\DS_BytePool.cpp" />
+    <ClCompile Include="..\Source\DS_ByteQueue.cpp" />
+    <ClCompile Include="..\Source\DS_HuffmanEncodingTree.cpp" />
+    <ClCompile Include="..\Source\DS_Table.cpp" />
+    <ClCompile Include="..\Source\DynDNS.cpp" />
+    <ClCompile Include="..\Source\EmailSender.cpp" />
+    <ClCompile Include="..\Source\EpochTimeToString.cpp" />
+    <ClCompile Include="..\Source\FileList.cpp" />
+    <ClCompile Include="..\Source\FileListTransfer.cpp" />
+    <ClCompile Include="..\Source\FileOperations.cpp" />
+    <ClCompile Include="..\Source\FormatString.cpp" />
+    <ClCompile Include="..\Source\FullyConnectedMesh2.cpp" />
+    <ClCompile Include="..\Source\Getche.cpp" />
+    <ClCompile Include="..\Source\Gets.cpp" />
+    <ClCompile Include="..\Source\GetTime.cpp" />
+    <ClCompile Include="..\Source\gettimeofday.cpp" />
+    <ClCompile Include="..\Source\GridSectorizer.cpp" />
+    <ClCompile Include="..\Source\HTTPConnection.cpp" />
+    <ClCompile Include="..\Source\HTTPConnection2.cpp" />
+    <ClCompile Include="..\Source\IncrementalReadInterface.cpp" />
+    <ClCompile Include="..\Source\Itoa.cpp" />
+    <ClCompile Include="..\Source\LinuxStrings.cpp" />
+    <ClCompile Include="..\Source\LocklessTypes.cpp" />
+    <ClCompile Include="..\Source\LogCommandParser.cpp" />
+    <ClCompile Include="..\Source\MessageFilter.cpp" />
+    <ClCompile Include="..\Source\NatPunchthroughClient.cpp" />
+    <ClCompile Include="..\Source\NatPunchthroughServer.cpp" />
+    <ClCompile Include="..\Source\NatTypeDetectionClient.cpp" />
+    <ClCompile Include="..\Source\NatTypeDetectionCommon.cpp" />
+    <ClCompile Include="..\Source\NatTypeDetectionServer.cpp" />
+    <ClCompile Include="..\Source\NetworkIDManager.cpp" />
+    <ClCompile Include="..\Source\NetworkIDObject.cpp" />
+    <ClCompile Include="..\Source\PacketConsoleLogger.cpp" />
+    <ClCompile Include="..\Source\PacketFileLogger.cpp" />
+    <ClCompile Include="..\Source\PacketizedTCP.cpp" />
+    <ClCompile Include="..\Source\PacketLogger.cpp" />
+    <ClCompile Include="..\Source\PacketOutputWindowLogger.cpp" />
+    <ClCompile Include="..\Source\PluginInterface2.cpp" />
+    <ClCompile Include="..\Source\PS4Includes.cpp" />
+    <ClCompile Include="..\Source\Rackspace.cpp" />
+    <ClCompile Include="..\Source\RakMemoryOverride.cpp" />
+    <ClCompile Include="..\Source\RakNetCommandParser.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_360_720.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_Berkley.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_Berkley_NativeClient.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_NativeClient.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_PS3_PS4.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_PS4.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_Vita.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_Windows_Linux.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_Windows_Linux_360.cpp" />
+    <ClCompile Include="..\Source\RakNetSocket2_WindowsStore8.cpp" />
+    <ClCompile Include="..\Source\RakNetStatistics.cpp" />
+    <ClCompile Include="..\Source\RakNetTransport2.cpp" />
+    <ClCompile Include="..\Source\RakNetTypes.cpp" />
+    <ClCompile Include="..\Source\RakPeer.cpp" />
+    <ClCompile Include="..\Source\RakSleep.cpp" />
+    <ClCompile Include="..\Source\RakString.cpp" />
+    <ClCompile Include="..\Source\RakThread.cpp" />
+    <ClCompile Include="..\Source\RakWString.cpp" />
+    <ClCompile Include="..\Source\Rand.cpp" />
+    <ClCompile Include="..\Source\ReadyEvent.cpp" />
+    <ClCompile Include="..\Source\RelayPlugin.cpp" />
+    <ClCompile Include="..\Source\ReliabilityLayer.cpp" />
+    <ClCompile Include="..\Source\ReplicaManager3.cpp" />
+    <ClCompile Include="..\Source\Router2.cpp" />
+    <ClCompile Include="..\Source\RPC4Plugin.cpp" />
+    <ClCompile Include="..\Source\SecureHandshake.cpp" />
+    <ClCompile Include="..\Source\SendToThread.cpp" />
+    <ClCompile Include="..\Source\SHA1.cpp" />
+    <ClCompile Include="..\Source\SignaledEvent.cpp" />
+    <ClCompile Include="..\Source\SimpleMutex.cpp" />
+    <ClCompile Include="..\Source\SocketLayer.cpp" />
+    <ClCompile Include="..\Source\StatisticsHistory.cpp" />
+    <ClCompile Include="..\Source\StringCompressor.cpp" />
+    <ClCompile Include="..\Source\StringTable.cpp" />
+    <ClCompile Include="..\Source\SuperFastHash.cpp" />
+    <ClCompile Include="..\Source\TableSerializer.cpp" />
+    <ClCompile Include="..\Source\TCPInterface.cpp" />
+    <ClCompile Include="..\Source\TeamBalancer.cpp" />
+    <ClCompile Include="..\Source\TeamManager.cpp" />
+    <ClCompile Include="..\Source\TelnetTransport.cpp" />
+    <ClCompile Include="..\Source\ThreadsafePacketLogger.cpp" />
+    <ClCompile Include="..\Source\TwoWayAuthentication.cpp" />
+    <ClCompile Include="..\Source\UDPForwarder.cpp" />
+    <ClCompile Include="..\Source\UDPProxyClient.cpp" />
+    <ClCompile Include="..\Source\UDPProxyCoordinator.cpp" />
+    <ClCompile Include="..\Source\UDPProxyServer.cpp" />
+    <ClCompile Include="..\Source\UdpService.cpp" />
+    <ClCompile Include="..\Source\VariableDeltaSerializer.cpp" />
+    <ClCompile Include="..\Source\VariableListDeltaTracker.cpp" />
+    <ClCompile Include="..\Source\VariadicSQLParser.cpp" />
+    <ClCompile Include="..\Source\VitaIncludes.cpp" />
+    <ClCompile Include="..\Source\WSAStartupSingleton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\_FindFirst.h" />
+    <ClInclude Include="..\include\AutopatcherPatchContext.h" />
+    <ClInclude Include="..\include\AutopatcherRepositoryInterface.h" />
+    <ClInclude Include="..\include\Base64Encoder.h" />
+    <ClInclude Include="..\include\BitStream.h" />
+    <ClInclude Include="..\include\CCRakNetSlidingWindow.h" />
+    <ClInclude Include="..\include\CCRakNetUDT.h" />
+    <ClInclude Include="..\include\CheckSum.h" />
+    <ClInclude Include="..\include\CloudClient.h" />
+    <ClInclude Include="..\include\CloudCommon.h" />
+    <ClInclude Include="..\include\CloudServer.h" />
+    <ClInclude Include="..\include\CommandParserInterface.h" />
+    <ClInclude Include="..\include\ConnectionGraph2.h" />
+    <ClInclude Include="..\include\ConsoleServer.h" />
+    <ClInclude Include="..\include\DataCompressor.h" />
+    <ClInclude Include="..\include\DirectoryDeltaTransfer.h" />
+    <ClInclude Include="..\include\DS_BinarySearchTree.h" />
+    <ClInclude Include="..\include\DS_BPlusTree.h" />
+    <ClInclude Include="..\include\DS_BytePool.h" />
+    <ClInclude Include="..\include\DS_ByteQueue.h" />
+    <ClInclude Include="..\include\DS_Hash.h" />
+    <ClInclude Include="..\include\DS_Heap.h" />
+    <ClInclude Include="..\include\DS_HuffmanEncodingTree.h" />
+    <ClInclude Include="..\include\DS_HuffmanEncodingTreeFactory.h" />
+    <ClInclude Include="..\include\DS_HuffmanEncodingTreeNode.h" />
+    <ClInclude Include="..\include\DS_LinkedList.h" />
+    <ClInclude Include="..\include\DS_List.h" />
+    <ClInclude Include="..\include\DS_Map.h" />
+    <ClInclude Include="..\include\DS_MemoryPool.h" />
+    <ClInclude Include="..\include\DS_Multilist.h" />
+    <ClInclude Include="..\include\DS_OrderedChannelHeap.h" />
+    <ClInclude Include="..\include\DS_OrderedList.h" />
+    <ClInclude Include="..\include\DS_Queue.h" />
+    <ClInclude Include="..\include\DS_QueueLinkedList.h" />
+    <ClInclude Include="..\include\DS_RangeList.h" />
+    <ClInclude Include="..\include\DS_Table.h" />
+    <ClInclude Include="..\include\DS_ThreadsafeAllocatingQueue.h" />
+    <ClInclude Include="..\include\DS_Tree.h" />
+    <ClInclude Include="..\include\DS_WeightedGraph.h" />
+    <ClInclude Include="..\include\DynDNS.h" />
+    <ClInclude Include="..\include\EmailSender.h" />
+    <ClInclude Include="..\include\EmptyHeader.h" />
+    <ClInclude Include="..\include\EpochTimeToString.h" />
+    <ClInclude Include="..\include\Export.h" />
+    <ClInclude Include="..\include\FileList.h" />
+    <ClInclude Include="..\include\FileListNodeContext.h" />
+    <ClInclude Include="..\include\FileListTransfer.h" />
+    <ClInclude Include="..\include\FileListTransferCBInterface.h" />
+    <ClInclude Include="..\include\FileOperations.h" />
+    <ClInclude Include="..\include\FormatString.h" />
+    <ClInclude Include="..\include\FullyConnectedMesh2.h" />
+    <ClInclude Include="..\include\Getche.h" />
+    <ClInclude Include="..\include\Gets.h" />
+    <ClInclude Include="..\include\GetTime.h" />
+    <ClInclude Include="..\include\gettimeofday.h" />
+    <ClInclude Include="..\include\GridSectorizer.h" />
+    <ClInclude Include="..\include\HTTPConnection.h" />
+    <ClInclude Include="..\include\HTTPConnection2.h" />
+    <ClInclude Include="..\include\IncrementalReadInterface.h" />
+    <ClInclude Include="..\include\InternalPacket.h" />
+    <ClInclude Include="..\include\Itoa.h" />
+    <ClInclude Include="..\include\Kbhit.h" />
+    <ClInclude Include="..\include\LinuxStrings.h" />
+    <ClInclude Include="..\include\LocklessTypes.h" />
+    <ClInclude Include="..\include\LogCommandParser.h" />
+    <ClInclude Include="..\include\MessageFilter.h" />
+    <ClInclude Include="..\include\MessageIdentifiers.h" />
+    <ClInclude Include="..\include\MTUSize.h" />
+    <ClInclude Include="..\include\NativeFeatureIncludes.h" />
+    <ClInclude Include="..\include\NativeFeatureIncludesOverrides.h" />
+    <ClInclude Include="..\include\NativeTypes.h" />
+    <ClInclude Include="..\include\NatPunchthroughClient.h" />
+    <ClInclude Include="..\include\NatPunchthroughServer.h" />
+    <ClInclude Include="..\include\NatTypeDetectionClient.h" />
+    <ClInclude Include="..\include\NatTypeDetectionCommon.h" />
+    <ClInclude Include="..\include\NatTypeDetectionServer.h" />
+    <ClInclude Include="..\include\NetworkIDManager.h" />
+    <ClInclude Include="..\include\NetworkIDObject.h" />
+    <ClInclude Include="..\include\PacketConsoleLogger.h" />
+    <ClInclude Include="..\include\PacketFileLogger.h" />
+    <ClInclude Include="..\include\PacketizedTCP.h" />
+    <ClInclude Include="..\include\PacketLogger.h" />
+    <ClInclude Include="..\include\PacketOutputWindowLogger.h" />
+    <ClInclude Include="..\include\PacketPool.h" />
+    <ClInclude Include="..\include\PacketPriority.h" />
+    <ClInclude Include="..\include\PluginInterface2.h" />
+    <ClInclude Include="..\include\PS3Includes.h" />
+    <ClInclude Include="..\include\PS4Includes.h" />
+    <ClInclude Include="..\include\Rackspace.h" />
+    <ClInclude Include="..\include\RakAlloca.h" />
+    <ClInclude Include="..\include\RakAssert.h" />
+    <ClInclude Include="..\include\RakMemoryOverride.h" />
+    <ClInclude Include="..\include\RakNetCommandParser.h" />
+    <ClInclude Include="..\include\RakNetDefines.h" />
+    <ClInclude Include="..\include\RakNetDefinesOverrides.h" />
+    <ClInclude Include="..\include\RakNetSmartPtr.h" />
+    <ClInclude Include="..\include\RakNetSocket.h" />
+    <ClInclude Include="..\include\RakNetSocket2.h" />
+    <ClInclude Include="..\include\RakNetStatistics.h" />
+    <ClInclude Include="..\include\RakNetTime.h" />
+    <ClInclude Include="..\include\RakNetTransport2.h" />
+    <ClInclude Include="..\include\RakNetTypes.h" />
+    <ClInclude Include="..\include\RakNetVersion.h" />
+    <ClInclude Include="..\include\RakPeer.h" />
+    <ClInclude Include="..\include\RakPeerInterface.h" />
+    <ClInclude Include="..\include\RakSleep.h" />
+    <ClInclude Include="..\include\RakString.h" />
+    <ClInclude Include="..\include\RakThread.h" />
+    <ClInclude Include="..\include\RakWString.h" />
+    <ClInclude Include="..\include\Rand.h" />
+    <ClInclude Include="..\include\ReadyEvent.h" />
+    <ClInclude Include="..\include\RefCountedObj.h" />
+    <ClInclude Include="..\include\RelayPlugin.h" />
+    <ClInclude Include="..\include\ReliabilityLayer.h" />
+    <ClInclude Include="..\include\ReplicaEnums.h" />
+    <ClInclude Include="..\include\ReplicaManager3.h" />
+    <ClInclude Include="..\include\Router2.h" />
+    <ClInclude Include="..\include\RPC4Plugin.h" />
+    <ClInclude Include="..\include\SecureHandshake.h" />
+    <ClInclude Include="..\include\SendToThread.h" />
+    <ClInclude Include="..\include\SHA1.h" />
+    <ClInclude Include="..\include\SignaledEvent.h" />
+    <ClInclude Include="..\include\SimpleMutex.h" />
+    <ClInclude Include="..\include\SimpleTCPServer.h" />
+    <ClInclude Include="..\include\SingleProducerConsumer.h" />
+    <ClInclude Include="..\include\SocketDefines.h" />
+    <ClInclude Include="..\include\SocketIncludes.h" />
+    <ClInclude Include="..\include\SocketLayer.h" />
+    <ClInclude Include="..\include\StatisticsHistory.h" />
+    <ClInclude Include="..\include\StringCompressor.h" />
+    <ClInclude Include="..\include\StringTable.h" />
+    <ClInclude Include="..\include\SuperFastHash.h" />
+    <ClInclude Include="..\include\TableSerializer.h" />
+    <ClInclude Include="..\include\TCPInterface.h" />
+    <ClInclude Include="..\include\TeamBalancer.h" />
+    <ClInclude Include="..\include\TeamManager.h" />
+    <ClInclude Include="..\include\TelnetTransport.h" />
+    <ClInclude Include="..\include\ThreadPool.h" />
+    <ClInclude Include="..\include\ThreadsafePacketLogger.h" />
+    <ClInclude Include="..\include\TransportInterface.h" />
+    <ClInclude Include="..\include\TwoWayAuthentication.h" />
+    <ClInclude Include="..\include\UDPForwarder.h" />
+    <ClInclude Include="..\include\UDPProxyClient.h" />
+    <ClInclude Include="..\include\UDPProxyCommon.h" />
+    <ClInclude Include="..\include\UDPProxyCoordinator.h" />
+    <ClInclude Include="..\include\UDPProxyServer.h" />
+    <ClInclude Include="..\include\UdpService.h" />
+    <ClInclude Include="..\include\VariableDeltaSerializer.h" />
+    <ClInclude Include="..\include\VariableListDeltaTracker.h" />
+    <ClInclude Include="..\include\VariadicSQLParser.h" />
+    <ClInclude Include="..\include\VitaIncludes.h" />
+    <ClInclude Include="..\include\WindowsIncludes.h" />
+    <ClInclude Include="..\include\WSAStartupSingleton.h" />
+    <ClInclude Include="..\include\XBox360Includes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Source\CMakeLists.txt" />
+    <None Include="readme.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
