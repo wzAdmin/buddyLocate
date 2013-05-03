@@ -39,6 +39,7 @@ namespace DB
 			else
 				er = error_user_notexsit;
 		}
+
 		catch(const sql::SQLException& e)
 		{
 			printf("%s",e.getSQLState().c_str());
@@ -60,7 +61,7 @@ namespace DB
 		try
 		{
 			conn = connect();
-			conn->createStatement();
+			stmt = conn->createStatement();
 
 			char sqlstmt[256] = {0};
 			sprintf(sqlstmt,"SELECT * FROM Login WHERE `user` = '%s'",user);
@@ -92,7 +93,7 @@ namespace DB
 	sql::Connection* LoginDB::connect()
 	{
 		sql::mysql::MySQL_Driver* driver = sql::mysql::get_driver_instance();
-		sql::Connection* conn  = driver->connect("localhost:3306","root","root");
+		sql::Connection* conn  = driver->connect("localhost:3307","root","root");
 		conn->setSchema("Buddy");
 		return conn;
 	}
