@@ -777,6 +777,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Source\UdpService.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Source\VariableDeltaSerializer.cpp"
 				>
 			</File>
@@ -1384,6 +1388,10 @@
 			</File>
 			<File
 				RelativePath="..\include\UDPProxyServer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\UdpService.h"
 				>
 			</File>
 			<File

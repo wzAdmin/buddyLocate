@@ -1,5 +1,6 @@
 #pragma once
 #include "SignaledEvent.h"
+#include "UdpService.h"
 
 namespace RakNet
 {
@@ -7,22 +8,18 @@ namespace RakNet
 }
 namespace Net
 {
-	class LoginService
+	class LoginService : public RakNet::UdpService
 	{
 	public:
 		static LoginService& Instance();
-		void Start();
-		void Stop();
 	private:
 		LoginService();
 		~LoginService();
-		void Update();
-		static unsigned int __stdcall ThreadFunc(void* param);
-	private:
+		virtual void Update(const RakNet::Packet* pack);
+		void Login(const RakNet::Packet* pack);
+		void Register(const RakNet::Packet* pack);
+	public:
 		static const unsigned int MaxConnectionNum = 100;
-		static const unsigned int Port = 50508;
-		RakNet::RakPeerInterface* mServer;
-		RakNet::SignaledEvent mQuitEvent;
-		bool bRuning;
+		static const unsigned short Port = 50508;
 	};
 }

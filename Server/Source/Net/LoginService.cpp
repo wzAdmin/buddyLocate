@@ -2,7 +2,12 @@
 #include "RakPeerInterface.h"
 #include "RakSleep.h"
 #include <stdio.h>
+#include "DB/LoginDB.h"
+#include "CommonType.h"
+#include "BitStream.h"
 
+
+using namespace Common;
 namespace Net
 {
 	LoginService& LoginService::Instance()
@@ -13,57 +18,57 @@ namespace Net
 
 	LoginService::LoginService()
 	{
-		bRuning = false;
-		mQuitEvent.InitEvent();
 	}
 
 	LoginService::~LoginService()
 	{
-		Stop();
-		mQuitEvent.CloseEvent();
 	}
 
-	void LoginService::Start()
+	void LoginService::Update( const RakNet::Packet* pack )
 	{
-		mServer = RakNet::RakPeerInterface::GetInstance();
-		RakNet::SocketDescriptor sdp(Port,NULL);
-		sdp.socketFamily = AF_INET;
-		RakNet::StartupResult res = mServer->Startup(MaxConnectionNum,&sdp,1);
-		mServer->SetMaximumIncomingConnections(MaxConnectionNum);
-		RakAssert(res == RakNet::RAKNET_ALREADY_STARTED || res == RakNet::RAKNET_STARTED);
-		RakNet::RakThread::Create(ThreadFunc,this);
-		while(!bRuning)
-			RakSleep(10);
-		printf("LoginService Started\n");
-	}
-
-	unsigned int __stdcall LoginService::ThreadFunc( void* param)
-	{
-		LoginService* LgS = (LoginService*)param;
-		LgS->bRuning = true;
-		RakNet::Packet* p = NULL;
-		while (LgS->bRuning)
+		switch(pack->data[0])
 		{
-			while (p = LgS->mServer->Receive())
-			{
-				LgS->mServer->DeallocatePacket(p);
-			}
-			LgS->mQuitEvent.WaitOnEvent(10);
+		case NETMSG_LOGIN:
+			Login(pack);
+			break;
+		case NETMSG_REGISTE:
+			Register(pack);
+			break;
+		default:
+			break;
 		}
-		LgS->bRuning = false;
-		return NULL;
 	}
 
-	void LoginService::Stop()
+	void LoginService::Login( const RakNet::Packet* pack )
 	{
-		if(!bRuning)
-			return;
-		mServer->Shutdown(100);
-		bRuning= false;
-		mQuitEvent.SetEvent();
-		while(bRuning)
-			RakSleep(10);
-		RakNet::RakPeerInterface::DestroyInstance(mServer);
+		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
+		char* user = NULL;
+		char* pswd = NULL;
+		bst.Read(user);
+		bst.Read(pswd);
+		DB::LoginDB lgdb;
+		LoginError err = lgdb.Login(user , pswd);
+
+		RakNet::BitStream bstsd;
+		bstsd.Write((RakNet::MessageID)NETMSG_LOGIN);
+		bstsd.Write((unsigned char) err);
+		mServer->Send(&bstsd,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,pack->systemAddress,false);
+	}
+
+	void LoginService::Register( const RakNet::Packet* pack)
+	{	
+		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
+		char* user = NULL;
+		char* pswd = NULL;
+		bst.Read(user);
+		bst.Read(pswd);
+		DB::LoginDB lgdb;
+		LoginError err = lgdb.Register(user , pswd);	
+		
+		RakNet::BitStream bstsd;
+		bstsd.Write((RakNet::MessageID)NETMSG_LOGIN);
+		bstsd.Write((unsigned char) err);
+		mServer->Send(&bstsd,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,pack->systemAddress,false);
 	}
 
 }
