@@ -27,13 +27,16 @@
     <ClInclude Include="..\Source\Net\LoginHelper.h">
       <Filter>Net</Filter>
     </ClInclude>
+    <ClInclude Include="..\Source\Net\LoginCallBack.h">
+      <Filter>Net</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Net\LoginHelper.cpp">
       <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>资源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

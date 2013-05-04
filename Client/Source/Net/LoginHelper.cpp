@@ -2,6 +2,7 @@
 #include "RakPeerInterface.h"
 #include "CommonType.h"
 #include "BitStream.h"
+#include "LoginCallBack.h"
 #include <stdio.h>
 
 
@@ -77,7 +78,7 @@ void LoginHelper::Update( const RakNet::Packet* pack )
 	}
 }
 
-LoginHelper::LoginHelper():mConnected(false),mAfterConn(NOTHING)
+LoginHelper::LoginHelper():mConnected(false),mAfterConn(NOTHING),mCallBack(NULL)
 {
 
 }
@@ -101,6 +102,8 @@ void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )
 		printf("User  not Existed\n");
 		Register(mUser , mPswd);
 	}
+	if(mCallBack)
+		mCallBack->OnLoginReulst(LoginError(err));
 }
 
 void LoginHelper::OnRegisterDone(  const RakNet::Packet* pack )
@@ -114,5 +117,7 @@ void LoginHelper::OnRegisterDone(  const RakNet::Packet* pack )
 	{
 		printf("User Existed\n");
 	}
+	if(mCallBack)
+		mCallBack->OnRegisterResult(LoginError(err));
 }
 

@@ -27,7 +27,7 @@ namespace DB
 			conn = connect();
 			stmt = conn->createStatement();
 			char sqlstmt[256] = {0};
-			sprintf(sqlstmt,"SELECT * FROM Login WHERE user = %s",user);
+			sprintf(sqlstmt,"SELECT * FROM Login WHERE user = '%s'",user);
 			sql::ResultSet* res = stmt->executeQuery(sqlstmt);
 			reshead = res;
 			if(res->next())

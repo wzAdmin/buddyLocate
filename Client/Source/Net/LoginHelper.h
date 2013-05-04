@@ -3,6 +3,7 @@
 #include "UdpService.h"
 #include "RakNetTypes.h"
 
+class ILoginCallBack;
 class LoginHelper : public RakNet::UdpService
 {
 	enum AfterConnect
@@ -14,6 +15,7 @@ class LoginHelper : public RakNet::UdpService
 public:
 	LoginHelper();
 	~LoginHelper(){}
+	void SetCallBack(ILoginCallBack* cb){mCallBack = cb;}
 	void Login(const char* user , const char* pswd);
 	void Register(const char* user , const char* pswd);
 private:
@@ -21,6 +23,8 @@ private:
 	void ConnectServer();
 	void OnLoginDone( const RakNet::Packet* pack);
 	void OnRegisterDone( const RakNet::Packet* pack);
+
+	ILoginCallBack* mCallBack;
 	char mUser[256];
 	char mPswd[256];
 	AfterConnect mAfterConn;
