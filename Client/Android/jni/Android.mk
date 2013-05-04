@@ -1,11 +1,29 @@
 LOCAL_PATH := $(call my-dir)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE    := RakNet
-LOCAL_CFLAGS += -DANDROID
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../RakNet/include
-MY_PREFIX := $(LOCAL_PATH)/../../../RakNet/Source/
-MY_SOURCES := $(wildcard $(MY_PREFIX)*.cpp)
-LOCAL_SRC_FILES += $(MY_SOURCES:$(MY_PREFIX)%=../../../RakNet/Source/%) 
-include $(BUILD_SHARED_LIBRARY)
+LOCAL_PATH := $(call my-dir)
+
+###########################################################
+## Find all of files under the named directories.
+###########################################################
+
+define all-files-under
+$(patsubst ./%,%, \
+  $(shell cd $(LOCAL_PATH) ; \
+          find $(1) -name "$(2)" -and -not -name ".*") \
+ )
+endef
+
+define all-cpp-files-under
+$(call all-files-under,$(1),*.cpp)
+endef
+
+define all-c-files-under
+$(call all-files-under,$(1),*.c)
+endef
+
+define all-S-files-under
+$(call all-files-under,$(1),*.S)
+endef
+CUR_PATH := $(LOCAL_PATH)
+include $(CUR_PATH)/Client.mk
 
