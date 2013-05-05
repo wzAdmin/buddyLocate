@@ -37,6 +37,7 @@ namespace RakNet
 		UdpService* LgS = (UdpService*)arguments;
 		LgS->bRuning = true;
 		RakNet::Packet* p = NULL;
+		LgS->OnServiceStart();
 		while (LgS->bRuning)
 		{
 			while (p = LgS->mServer->Receive())
@@ -47,6 +48,7 @@ namespace RakNet
 			LgS->mQuitEvent.WaitOnEvent(10);
 		}
 		LgS->bRuning = false;
+		LgS->OnServiceStop();
 		return NULL;
 	}
 

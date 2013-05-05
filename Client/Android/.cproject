@@ -32,6 +32,7 @@
 									<listOptionValue builtIn="false" value="&quot;D:\adt-bundle-windows\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.6\include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;E:\buddyLocate\Common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;E:\buddyLocate\Raknet\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\adt-bundle-windows\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.6\include\tr1&quot;"/>
 								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.781658797" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>

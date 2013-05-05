@@ -41,6 +41,7 @@ namespace Net
 
 	void LoginService::Login( const RakNet::Packet* pack )
 	{
+		printf("IP:%s want to Login\n",pack->systemAddress.ToString());
 		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
 		char user[256] ;
 		char pswd[256] ;
@@ -57,6 +58,7 @@ namespace Net
 
 	void LoginService::Register( const RakNet::Packet* pack)
 	{	
+		printf("IP:%s want to Register\n",pack->systemAddress.ToString());
 		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
 		char user[256] ;
 		char pswd[256] ;

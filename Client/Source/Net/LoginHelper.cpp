@@ -3,7 +3,7 @@
 #include "CommonType.h"
 #include "BitStream.h"
 #include "LoginCallBack.h"
-#include <stdio.h>
+#include "Trace.h"
 
 
 using namespace Common;
@@ -11,15 +11,16 @@ using namespace Common;
 
 void LoginHelper::Login( const char* user , const char* pswd )
 {
+	int lenuser = strlen(user);
+	int lenpswd = strlen(pswd);
+	memcpy(mUser , user , lenuser);
+	memcpy(mPswd , pswd , lenpswd);
+	mUser[lenuser] = 0;
+	mPswd[lenpswd] = 0;
+
 	if(!mConnected)
 	{
 		mAfterConn = LOGIN;
-		int lenuser = strlen(user);
-		int lenpswd = strlen(pswd);
-		memcpy(mUser , user , lenuser);
-		memcpy(mPswd , pswd , lenpswd);
-		mUser[lenuser] = 0;
-		mPswd[lenpswd] = 0;
 		ConnectServer();
 	}
 	else
@@ -34,15 +35,17 @@ void LoginHelper::Login( const char* user , const char* pswd )
 
 void LoginHelper::Register( const char* user , const char* pswd )
 {
+
+	int lenuser = strlen(user);
+	int lenpswd = strlen(pswd);
+	memcpy(mUser , user , lenuser);
+	memcpy(mPswd , pswd , lenpswd);
+	mUser[lenuser] = 0;
+	mPswd[lenpswd] = 0;
+
 	if(!mConnected)
 	{
 		mAfterConn = REGISTER;
-		int lenuser = strlen(user);
-		int lenpswd = strlen(pswd);
-		memcpy(mUser , user , lenuser);
-		memcpy(mPswd , pswd , lenpswd);
-		mUser[lenuser] = 0;
-		mPswd[lenpswd] = 0;
 		ConnectServer();
 	}
 	else
@@ -67,7 +70,12 @@ void LoginHelper::Update( const RakNet::Packet* pack )
 		else if(REGISTER == mAfterConn)
 			Register(mUser,mPswd);
 		mAfterConn = NOTHING;
-		printf("Connect Success\n");
+		LOG_Trace(LOG_INFO,"Login","Connect Success\n");
+		break;
+	case ID_DISCONNECTION_NOTIFICATION:
+	case ID_CONNECTION_LOST:
+		LOG_Trace(LOG_INFO,"Login","Connect LOST\n");
+		mConnected = false;
 		break;
 	case NETMSG_LOGIN:
 		OnLoginDone(pack);
@@ -94,13 +102,12 @@ void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )
 	unsigned char err;
 	bst.Read(err);
 	if(LGE_none == err)
-		printf("Login Success\n");
+		LOG_Trace(LOG_INFO,"Login","Login Success\n");
 	else if(LGE_password_incorrect == err)
-		printf("Pass Word Incorrect\n");
+		LOG_Trace(LOG_INFO,"Login","Pass Word Incorrect\n");
 	else if(LGE_user_notexist)
 	{
-		printf("User  not Existed\n");
-		Register(mUser , mPswd);
+		LOG_Trace(LOG_INFO,"Login","User  not Existed\n");
 	}
 	if(mCallBack)
 		mCallBack->OnLoginReulst(LoginError(err));
@@ -112,10 +119,10 @@ void LoginHelper::OnRegisterDone(  const RakNet::Packet* pack )
 	unsigned char err;
 	bst.Read(err);
 	if(LGE_none == err)
-		printf("Register Success\n");
+		LOG_Trace(LOG_INFO,"Login","Register Success\n");
 	else if(LGE_user_existed)
 	{
-		printf("User Existed\n");
+		LOG_Trace(LOG_INFO,"Login","User Existed\n");
 	}
 	if(mCallBack)
 		mCallBack->OnRegisterResult(LoginError(err));

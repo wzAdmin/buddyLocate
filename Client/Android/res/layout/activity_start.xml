@@ -8,9 +8,47 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".StartActivity" >
 
-    <TextView
+    <EditText
+        android:id="@+id/pswd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_above="@+id/Login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pswd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
+        android:ems="10" 
+		android:inputType="text">
+    <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="92dp"
+        android:text="@string/Login" />
+
+    <TextView
+        android:id="@+id/loginInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/user"
+        android:layout_alignRight="@+id/Login"
+        android:layout_marginBottom="20dp"
+        android:text="" />
 
 </RelativeLayout>

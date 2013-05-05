@@ -1,5 +1,6 @@
 include $(LOCAL_PATH)/RakNet.mk
 include $(CLEAR_VARS)
+LOCAL_CFLAGS += -DANDROID
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../RakNet/include \
 					$(LOCAL_PATH)/../../../Common \
 					$(LOCAL_PATH)/../../Source

@@ -3,8 +3,7 @@
  */
 package com.wzAdmin.buddy.net;
 
-import android.app.Activity;
-import android.util.Log;
+import android.os.Handler;
 
 /**
  * @author Administrator
@@ -14,9 +13,9 @@ public class LoginHelper implements ILoginCallBack {
 	static{
 		System.loadLibrary("Client");
 	}
-	Activity mContext;
-	public LoginHelper(Activity context){
-		mContext = context;
+	Handler mhandler;
+	public LoginHelper(Handler msghandler){
+		mhandler = msghandler;
 		SetCallBack(this);
 	}
 	/* (non-Javadoc)
@@ -25,8 +24,8 @@ public class LoginHelper implements ILoginCallBack {
 	@Override
 	public void OnLoginResult(int errcode) {
 		// TODO Auto-generated method stub
-		Log.i("Login", "errcode:"+errcode);
-	}
+		mhandler.sendMessage(mhandler.obtainMessage(errcode));
+		}
 
 	/* (non-Javadoc)
 	 * @see com.wzAdmin.buddy.net.ILoginCallBack#OnRegistResult()
@@ -34,8 +33,7 @@ public class LoginHelper implements ILoginCallBack {
 	@Override
 	public void OnRegistResult(int errcode) {
 		// TODO Auto-generated method stub
-		
-		Log.i("Login", "errcode:"+errcode);
+		mhandler.sendMessage(mhandler.obtainMessage(errcode));
 	}
 
 	/**

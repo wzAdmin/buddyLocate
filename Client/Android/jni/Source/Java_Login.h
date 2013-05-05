@@ -11,19 +11,21 @@
 #include"Net/LoginCallBack.h"
 #include"Net/LoginHelper.h"
 
-class JavaLogin : public ILoginCallBack
+class JavaLogin : public LoginHelper ,public ILoginCallBack
 {
 public:
 	static JavaLogin* Intance();
-	LoginHelper mLoginHelper;
 	void SetObj(JNIEnv* env,jobject obj);
 private:
 	JavaLogin();
 	~JavaLogin();
 	virtual void OnLoginReulst(LoginError err);
 	virtual void OnRegisterResult(LoginError err);
+	virtual void OnServiceStart();
+	virtual void OnServiceStop();
 	jobject mJobj;
 	JNIEnv* mEnv;
+	JNIEnv* mthreadEnv;
 	JavaVM* mJvm;
 	jmethodID mOnLoginReulstid;
 	jmethodID mOnRegisterResultid;

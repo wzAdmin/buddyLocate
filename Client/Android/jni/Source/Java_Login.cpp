@@ -5,7 +5,7 @@
  *      Author: Administrator
  */
 #include "Java_Login.h"
-#include "android/log.h"
+#include "Trace.h"
 
 JavaLogin* g_LoginInstance = NULL;
 JNIEnv* g_Env = NULL;
@@ -20,7 +20,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_net_LoginHelper_Login(J
 {
 	const char* utfuser = env->GetStringUTFChars(user , 0);
 	const char* utfpswd = env->GetStringUTFChars(pswd , 0);
-	JavaLogin::Intance()->mLoginHelper.Login(utfuser , utfpswd);
+	JavaLogin::Intance()->Login(utfuser , utfpswd);
 	env->ReleaseStringUTFChars(user , utfuser);
 	env->ReleaseStringUTFChars(pswd , utfpswd);
 }
@@ -29,7 +29,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_net_LoginHelper_Registe
 {
 	const char* utfuser = env->GetStringUTFChars(user , 0);
 	const char* utfpswd = env->GetStringUTFChars(pswd , 0);
-	JavaLogin::Intance()->mLoginHelper.Register(utfuser , utfpswd);
+	JavaLogin::Intance()->Register(utfuser , utfpswd);
 	env->ReleaseStringUTFChars(user , utfuser);
 	env->ReleaseStringUTFChars(pswd , utfpswd);
 }
@@ -39,11 +39,10 @@ extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_net_LoginHelper_SetCall
 	JavaLogin::Intance()->SetObj(env , cb);
 }
 
-JavaLogin::JavaLogin() : mJobj(NULL) , mEnv(NULL),mJvm(NULL),
+JavaLogin::JavaLogin() : mJobj(NULL) , mEnv(NULL),mJvm(NULL),mthreadEnv(NULL),
 		mOnLoginReulstid(NULL),mOnRegisterResultid(NULL)
 {
-	mLoginHelper.SetCallBack(this);
-	mLoginHelper.Start(1);
+	SetCallBack(this);
 }
 
 JavaLogin::~JavaLogin()
@@ -61,26 +60,27 @@ void JavaLogin::SetObj(JNIEnv* env ,jobject obj)
 	jclass jcls = mEnv->GetObjectClass(mJobj);
 	mOnLoginReulstid = mEnv->GetMethodID(jcls,"OnLoginResult","(I)V");
 	mOnRegisterResultid = mEnv->GetMethodID(jcls,"OnRegistResult","(I)V");
+	Start(1);
 }
+
+void JavaLogin::OnServiceStart()
+{
+	mJvm->AttachCurrentThread(&mthreadEnv,NULL);
+}
+
+void JavaLogin::OnServiceStop()
+{
+	mJvm->AttachCurrentThread(&mthreadEnv,NULL);
+}
+
 void JavaLogin::OnLoginReulst(LoginError err)
 {
-	JNIEnv* env = NULL;
-
-	mJvm->AttachCurrentThread(&env,NULL);
-
-	env->CallVoidMethod(mJobj,mOnLoginReulstid,(int)err);
-
-	mJvm->DetachCurrentThread();
+	mthreadEnv->CallVoidMethod(mJobj,mOnLoginReulstid,(int)err);
 }
+
 void JavaLogin::OnRegisterResult(LoginError err)
 {
-	JNIEnv* env = NULL;
-
-	mJvm->AttachCurrentThread(&env,NULL);
-
-	env->CallVoidMethod(mJobj,mOnRegisterResultid,(int)err);
-
-	mJvm->DetachCurrentThread();
+	mthreadEnv->CallVoidMethod(mJobj,mOnRegisterResultid,(int)err);
 }
 
 JavaLogin* JavaLogin::Intance()
