@@ -24,6 +24,7 @@ endef
 define all-S-files-under
 $(call all-files-under,$(1),*.S)
 endef
+
 CUR_PATH := $(LOCAL_PATH)
 include $(CUR_PATH)/Client.mk
 
