@@ -4,9 +4,14 @@
     <string name="app_name">BuddyLocate</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="Login">登录</string>
+    <string name="login">登录</string>
     <string name="user_notexist">用户不存在</string>
     <string name="pswd_incorrect">密码错误</string>
     <string name="user_existed">用户名已经存在</string>
+    <string name="pswd_diff">两次输入的密码不一致</string>
+    <string name="reg">注册</string>
+    <string name="user">用户</string>
+    <string name="pswd">密码</string>
+    <string name="repswd">重复密码</string>
 
 </resources>

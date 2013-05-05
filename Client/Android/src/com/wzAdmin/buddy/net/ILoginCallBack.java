@@ -13,9 +13,9 @@ public interface ILoginCallBack {
 	 */
 	public void OnRegistResult(int errcode);
 	
-	public static int LGE_none = 0;
-	public static int LGE_user_notexist = 1;
-	public static int LGE_user_existed = 2;
-	public static int LGE_password_incorrect = 3;
-	public static int LGE_unkown = 4;
+	public final static int LGE_none = 0;
+	public final static int LGE_user_notexist = 1;
+	public final static int LGE_user_existed = 2;
+	public final static int LGE_password_incorrect = 3;
+	public final static int LGE_unkown = 4;
 }

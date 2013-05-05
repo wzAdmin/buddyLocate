@@ -20,7 +20,7 @@ public class LoginHandler extends Handler {
 		TextView loginfo = (TextView)mContext.findViewById(R.id.loginInfo);
     	switch(msg.what){
     	case LoginHelper.LGE_none:
-    		loginfo.setText(R.string.Login);
+    		loginfo.setText(R.string.login);
     		mContext.startActivity(new Intent(mContext,MapActivity.class));
     		break;
     	case LoginHelper.LGE_password_incorrect:
@@ -28,6 +28,9 @@ public class LoginHandler extends Handler {
     		break;
     	case LoginHelper.LGE_user_notexist:
     		loginfo.setText(R.string.user_notexist);
+    		break;
+    	case LoginHelper.LGE_user_existed:
+    		loginfo.setText(R.string.user_existed);
     		break;
     	}
     }
