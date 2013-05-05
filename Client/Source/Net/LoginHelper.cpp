@@ -85,7 +85,7 @@ LoginHelper::LoginHelper():mConnected(false),mAfterConn(NOTHING),mCallBack(NULL)
 
 void LoginHelper::ConnectServer()
 {
-	mServer->Connect("localhost",50508,NULL,0);
+	mServer->Connect("192.168.100.100",50508,NULL,0);
 }
 
 void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )
