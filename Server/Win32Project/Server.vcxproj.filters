@@ -34,6 +34,12 @@
     <Filter Include="Net">
       <UniqueIdentifier>{a7a3bda4-0b88-4280-b57a-26cdd685546e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{c37a2b9c-064d-412a-83ba-434e201747c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Net\Action">
+      <UniqueIdentifier>{837118a7-82f6-4192-b77e-0ba6b8b04848}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Main.cpp">
@@ -50,6 +56,21 @@
     </ClCompile>
     <ClCompile Include="..\Source\Net\LoginService.cpp">
       <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Action.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Net\MainServer.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Net\UserAdressTable.cpp">
+      <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Net\Action\LoginMain.cpp">
+      <Filter>Net\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Net\Action\ACGetBuddy.cpp">
+      <Filter>Net\Action</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +133,27 @@
     </ClInclude>
     <ClInclude Include="..\Source\Net\LoginService.h">
       <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Action.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CommonType.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\GpsInfo.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Net\MainServer.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Net\UserAdressTable.h">
+      <Filter>Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Net\Action\LoginMain.h">
+      <Filter>Net\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Net\Action\ACGetBuddy.h">
+      <Filter>Net\Action</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

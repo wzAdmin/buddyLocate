@@ -91,13 +91,21 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Common\Action.cpp" />
     <ClCompile Include="..\Source\DBConfig.cpp" />
     <ClCompile Include="..\Source\DB\LoginDB.cpp" />
     <ClCompile Include="..\Source\Main.cpp" />
+    <ClCompile Include="..\Source\Net\Action\ACGetBuddy.cpp" />
+    <ClCompile Include="..\Source\Net\Action\LoginMain.cpp" />
     <ClCompile Include="..\Source\Net\LoginService.cpp" />
+    <ClCompile Include="..\Source\Net\MainServer.cpp" />
+    <ClCompile Include="..\Source\Net\UserAdressTable.cpp" />
     <ClCompile Include="..\Source\Platform\win32\platform_win32.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Common\Action.h" />
+    <ClInclude Include="..\..\Common\CommonType.h" />
+    <ClInclude Include="..\..\Common\GpsInfo.h" />
     <ClInclude Include="..\include\cppconn\build_config.h" />
     <ClInclude Include="..\include\cppconn\config.h" />
     <ClInclude Include="..\include\cppconn\connection.h" />
@@ -116,7 +124,11 @@
     <ClInclude Include="..\include\mysql_driver.h" />
     <ClInclude Include="..\Source\DBConfig.h" />
     <ClInclude Include="..\Source\DB\LoginDB.h" />
+    <ClInclude Include="..\Source\Net\Action\ACGetBuddy.h" />
+    <ClInclude Include="..\Source\Net\Action\LoginMain.h" />
     <ClInclude Include="..\Source\Net\LoginService.h" />
+    <ClInclude Include="..\Source\Net\MainServer.h" />
+    <ClInclude Include="..\Source\Net\UserAdressTable.h" />
     <ClInclude Include="..\Source\Platform\platform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

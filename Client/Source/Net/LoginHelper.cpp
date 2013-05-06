@@ -26,9 +26,10 @@ void LoginHelper::Login( const char* user , const char* pswd )
 	else
 	{
 		RakNet::BitStream bst;
-		bst.Write((RakNet::MessageID)NETMSG_LOGIN);
-		bst.Write(mUser);
-		bst.Write(mPswd);
+		Common::Login lg;
+		lg.pswd = pswd;
+		lg.user = user;
+		lg.ToBitStream(bst);
 		mServer->Send(&bst,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,mServerAdd,false);
 	}
 }
@@ -51,9 +52,11 @@ void LoginHelper::Register( const char* user , const char* pswd )
 	else
 	{
 		RakNet::BitStream bst;
-		bst.Write((RakNet::MessageID)NETMSG_REGISTE);
-		bst.Write(mUser);
-		bst.Write(mPswd);
+		Common::Regsite lg;
+		lg.pswd = pswd;
+		lg.user = user;
+		lg.ToBitStream(bst);
+
 		mServer->Send(&bst,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,mServerAdd,false);
 	}
 }
@@ -98,9 +101,8 @@ void LoginHelper::ConnectServer()
 
 void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )
 {
-	RakNet::BitStream bst(pack->data + 1,pack->bitSize - 1,false);
-	unsigned char err;
-	bst.Read(err);
+	Common::RELogin bst(pack->data ,pack->bitSize);
+	unsigned char err = bst.result;
 	if(LGE_none == err)
 		LOG_Trace(LOG_INFO,"Login","Login Success\n");
 	else if(LGE_password_incorrect == err)
@@ -115,9 +117,8 @@ void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )
 
 void LoginHelper::OnRegisterDone(  const RakNet::Packet* pack )
 {
-	RakNet::BitStream bst(pack->data + 1,pack->bitSize - 1,false);
-	unsigned char err;
-	bst.Read(err);
+	Common::RERegsite bst(pack->data ,pack->bitSize);
+	unsigned char err = bst.result;
 	if(LGE_none == err)
 		LOG_Trace(LOG_INFO,"Login","Register Success\n");
 	else if(LGE_user_existed)

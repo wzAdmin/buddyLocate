@@ -22,7 +22,7 @@
 							<targetPlatform id="org.eclipse.cdt.build.core.prefbase.toolchain.796120341.50928441" name=""/>
 							<builder command="E:\buddyLocate\Client\Android\make.bat" enableCleanBuild="false" enabledIncrementalBuild="false" id="org.eclipse.cdt.build.core.settings.default.builder.1359867024" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.657141772" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs">
-								<option id="org.eclipse.cdt.build.core.settings.holder.libfiles.1897716192" name="Library Files" superClass="org.eclipse.cdt.build.core.settings.holder.libfiles" valueType="libFiles"/>
+								<option id="org.eclipse.cdt.build.core.settings.holder.libfiles.1897716192" name="Library Files" superClass="org.eclipse.cdt.build.core.settings.holder.libfiles"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1485390041" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1439648161" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>

@@ -13,23 +13,25 @@ namespace Common
 	{
 	public:
 		Action(RakNet::RakPeerInterface* Peer,
-			RakNet::Packet* pket):mPeer(Peer),mpket(pket){}
+			const RakNet::Packet* pket):mPeer(Peer),mpket(pket){}
 		virtual ~Action(){}
 	public:
 		virtual void doWork() = 0;
 		virtual NetMessage GetMessageID() = 0;
-	private:
+	protected:
 		RakNet::RakPeerInterface* mPeer;
-		RakNet::Packet* mpket;
+		const RakNet::Packet* mpket;
 	};
 
 	class ActionCreater
 	{
-		typedef Action* (*Creater)();
+		typedef Action* (*Creater)(RakNet::RakPeerInterface* Peer,
+			const RakNet::Packet* pket);
 	public:
 		ActionCreater(){}
 		~ActionCreater(){}
-		Action* CreateAction(NetMessage messageID);
+		Action* CreateAction(NetMessage messageID,RakNet::RakPeerInterface* Peer,
+			const RakNet::Packet* pket);
 		void Registe(NetMessage id , Creater createfunc);
 	private:
 		std::map<NetMessage , Creater> mCreaters;
