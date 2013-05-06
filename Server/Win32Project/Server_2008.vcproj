@@ -191,7 +191,19 @@
 			Name="Common"
 			>
 			<File
+				RelativePath="..\..\Common\Action.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Common\Action.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\Common\CommonType.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\Common\GpsInfo.h"
 				>
 			</File>
 		</Filter>
@@ -244,6 +256,14 @@
 			</File>
 			<File
 				RelativePath="..\Source\Net\LoginService.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Source\Net\MainServer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Source\Net\MainServer.h"
 				>
 			</File>
 		</Filter>
