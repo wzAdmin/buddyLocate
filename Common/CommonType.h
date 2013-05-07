@@ -34,6 +34,8 @@ namespace Common
 	{
 		RakString userid;
 		GpsInfo gps;
+		RakNetGUID NetGuid;
+		SystemAddress userAddress;
 	}Buddy;
 	/************************************************************************/
 	/*以下是Client 和 Server 通讯的数据结构体定义 如果Client->Server的结构体名
@@ -178,6 +180,8 @@ namespace Common
 			{
 				bst.Read(bd.userid);
 				bst.Read(bd.gps);
+				bst.Read(bd.NetGuid);
+				bst.Read(bd.userAddress);
 				Buddies.push_back(bd);
 			}
 		}
@@ -188,6 +192,8 @@ namespace Common
 			{
 				bst.Write(Buddies[i].userid);
 				bst.Write(Buddies[i].gps);
+				bst.Write(Buddies[i].NetGuid);
+				bst.Write(Buddies[i].userAddress);
 			}
 		}
 		std::vector<Buddy> Buddies;

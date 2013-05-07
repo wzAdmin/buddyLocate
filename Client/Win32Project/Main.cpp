@@ -1,10 +1,11 @@
 #include "Net/LoginHelper.h"
+#include "Net/MainClient.h"
 #include <stdio.h>
 int main()
 {
-	LoginHelper lh;
+	Net::LoginHelper lh;
 	lh.Start(1);
-	lh.Login("1241313","1241215");
+	lh.Register("1267156","1241215");
 	char c;
 	while(c = getchar())
 	{
@@ -12,5 +13,6 @@ int main()
 			break;
 	}
 	lh.Stop();
+	Net::MainClient::Instance().Stop();
 	return 0;
 }

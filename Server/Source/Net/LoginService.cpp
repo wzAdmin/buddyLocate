@@ -50,7 +50,7 @@ namespace Net
 		RakNet::BitStream bstsd;
 		if(LGE_none == err)
 		{
-			relogin.MainServer = "192.168.100.100";
+			relogin.MainServer = "127.0.0.1";
 			relogin.port = MainServer::Port;
 		}
 		relogin.ToBitStream(bstsd);
@@ -69,7 +69,7 @@ namespace Net
 		RakNet::BitStream bstsd;
 		if(LGE_none == err)
 		{
-			re.MainServer = "192.168.100.100";
+			re.MainServer = "127.0.0.1";
 			re.port = MainServer::Port;
 		}
 		re.ToBitStream(bstsd);

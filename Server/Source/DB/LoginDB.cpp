@@ -32,7 +32,9 @@ namespace DB
 			reshead = res;
 			if(res->next())
 			{
-				if(res->getString("pswd") == sql::SQLString(pswd,strlen(pswd)))
+				sql::SQLString strpswd = res->getString("pswd");
+				std::string as(pswd,strlen(pswd));
+				if(strpswd == sql::SQLString(pswd,strlen(pswd)))
 					er =  LGE_none;
 				else
 					er = LGE_password_incorrect;
@@ -94,7 +96,7 @@ namespace DB
 	sql::Connection* LoginDB::connect()
 	{
 		sql::mysql::MySQL_Driver* driver = sql::mysql::get_driver_instance();
-		sql::Connection* conn  = driver->connect("localhost:3306","root","root");
+		sql::Connection* conn  = driver->connect("localhost:3307","root","root");
 		conn->setSchema("Buddy");
 		return conn;
 	}

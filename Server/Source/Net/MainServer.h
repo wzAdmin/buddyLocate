@@ -34,7 +34,6 @@ namespace Net
 
 		static int UerCallBack(Common::Action* ac, bool *returnOutput, void* perThreadData);
 
-		ThreadPool<int,int> thrpl;
 		RakNet::NatPunchthroughServer* mNps;
 		Common::ActionCreater* mAcCreater;
 		UserAdressTable* mUserTable;

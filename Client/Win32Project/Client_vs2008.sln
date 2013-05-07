@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client_vs2008", "Client_vs2008.vcproj", "{53A11174-719D-4C08-B276-710B7C480EFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC75CD23-CB75-4233-A305-B7328825A9A5} = {BC75CD23-CB75-4233-A305-B7328825A9A5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RakNet", "..\..\Raknet\Win32Project\RakNet_vc9.vcproj", "{BC75CD23-CB75-4233-A305-B7328825A9A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53A11174-719D-4C08-B276-710B7C480EFD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53A11174-719D-4C08-B276-710B7C480EFD}.Debug|Win32.Build.0 = Debug|Win32
+		{53A11174-719D-4C08-B276-710B7C480EFD}.Release|Win32.ActiveCfg = Release|Win32
+		{53A11174-719D-4C08-B276-710B7C480EFD}.Release|Win32.Build.0 = Release|Win32
+		{BC75CD23-CB75-4233-A305-B7328825A9A5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC75CD23-CB75-4233-A305-B7328825A9A5}.Debug|Win32.Build.0 = Debug|Win32
+		{BC75CD23-CB75-4233-A305-B7328825A9A5}.Release|Win32.ActiveCfg = Release|Win32
+		{BC75CD23-CB75-4233-A305-B7328825A9A5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

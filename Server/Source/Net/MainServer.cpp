@@ -45,7 +45,8 @@ namespace Net
 		{
 			Common::Action* ac = mAcCreater->CreateAction(Common::NetMessage(pack->data[0]) ,
 				mServer , pack);
-			mWorkers.AddInput(&MainServer::UerCallBack, ac );
+			if(ac)
+				mWorkers.AddInput(&MainServer::UerCallBack, ac );
 		}
 	}
 
@@ -53,7 +54,7 @@ namespace Net
 	{
 		ac->doWork();
 		delete ac;
-		returnOutput = false;
+		*returnOutput = false;
 		return 0;
 	}
 }
