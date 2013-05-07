@@ -44,6 +44,7 @@ namespace Net
 	{
 		printf("IP:%s want to Login\n",pack->systemAddress.ToString());
 		Common::Login bst(pack->data , pack->bitSize);
+		printf("User: %s ,pswd :%s\n",bst.user.C_String() , bst.pswd.C_String());
 		DB::LoginDB lgdb;
 		LoginError err = lgdb.Login(bst.user.C_String() , bst.pswd.C_String());
 		Common::RELogin relogin;

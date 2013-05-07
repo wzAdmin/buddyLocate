@@ -1,5 +1,7 @@
 #pragma once
 #include "CommonType.h"
+#include "mysql.h"
+
 namespace sql
 {
 	class Connection;
@@ -16,7 +18,8 @@ namespace DB
 		Common::LoginError Login(const char* user , const char* pswd);
 		Common::LoginError Register(const char* user , const char* pswd);
 	private:
-		sql::Connection* connect();
+		void connect();
+		MYSQL mySql;
 	};
 }
 

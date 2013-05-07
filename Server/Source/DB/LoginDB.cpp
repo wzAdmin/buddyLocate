@@ -1,7 +1,4 @@
 #include "LoginDB.h"
-#include "mysql_driver.h"
-#include "cppconn/statement.h"
-#include "cppconn/exception.h"
 #include "Platform/platform.h"
 
 using namespace Common;
@@ -9,6 +6,7 @@ namespace DB
 {
 	LoginDB::LoginDB(void)
 	{
+		connect();
 	}
 
 
@@ -19,86 +17,58 @@ namespace DB
 	Common::LoginError LoginDB::Login( const char* user , const char* pswd )
 	{
 		Common::LoginError er = LGE_none;
-		sql::ResultSet* reshead = NULL;
-		sql::Connection* conn = NULL;
-		sql::Statement* stmt = NULL;
-		try
+		char sqlstmt[256] = {0};
+		sprintf(sqlstmt,"SELECT * FROM Login WHERE `user` = '%s'",user);
+		mysql_real_query(&mySql ,sqlstmt ,strlen(sqlstmt));
+		MYSQL_RES* res = mysql_store_result(&mySql);
+		if(res->row_count)
 		{
-			conn = connect();
-			stmt = conn->createStatement();
-			char sqlstmt[256] = {0};
-			sprintf(sqlstmt,"SELECT * FROM Login WHERE user = '%s'",user);
-			sql::ResultSet* res = stmt->executeQuery(sqlstmt);
-			reshead = res;
-			if(res->next())
-			{
-				sql::SQLString strpswd = res->getString("pswd");
-				std::string as(pswd,strlen(pswd));
-				if(strpswd == sql::SQLString(pswd,strlen(pswd)))
-					er =  LGE_none;
-				else
-					er = LGE_password_incorrect;
-			}
+			MYSQL_ROW row = mysql_fetch_row(res);
+			std::string str(pswd);
+			const static std::string StrPswd("pswd");
+			int index = -1;
+ 			for ( unsigned int i = 0; i < res->field_count ; i++)
+ 			{
+				if(StrPswd == res->fields[i].name)
+					index = i;
+ 			}
+			if(-1 == index)
+				er = LGE_unkown;
+			else if(str == row[index])
+				er = LGE_none;
 			else
-				er = LGE_user_notexist;
+				er = LGE_password_incorrect;
 		}
-
-		catch(const sql::SQLException& e)
+		else
 		{
-			printf("%s",e.getSQLState().c_str());
-			er = LGE_unkown;
+			er = LGE_user_notexist;
 		}
-		delete reshead;
-		delete stmt;
-		delete conn;
+		mysql_free_result(res);
 		return er;
 	}
 
 	Common::LoginError LoginDB::Register( const char* user , const char* pswd )
 	{
 		LoginError re = LGE_none;
-		sql::ResultSet* reshead = NULL;
-		sql::Connection* conn = NULL;
-		sql::Statement* stmt = NULL;
-
-		try
+		char sqlstmt[256] = {0};
+		sprintf(sqlstmt,"SELECT * FROM Login WHERE `user` = '%s'",user);
+		mysql_real_query(&mySql ,sqlstmt ,strlen(sqlstmt));
+		MYSQL_RES* res = mysql_store_result(&mySql);
+		if(res->row_count)
+			re = LGE_user_existed;
+		else
 		{
-			conn = connect();
-			stmt = conn->createStatement();
-
-			char sqlstmt[256] = {0};
-			sprintf(sqlstmt,"SELECT * FROM Login WHERE `user` = '%s'",user);
-			sql::ResultSet* res = stmt->executeQuery(sqlstmt);
-			if(res->next())
-			{
-				re = LGE_user_existed;
-			}
-			else
-			{
-				sprintf(sqlstmt,"INSERT INTO Login (`user`,`pswd`,`time`) VALUES('%s','%s','%s')",user,pswd,GetTime().c_str());
-				if(!stmt->execute(sqlstmt))
-					re = LGE_none;
-				else
-					re = LGE_unkown;
-			}
+			sprintf(sqlstmt,"INSERT INTO Login (`user`,`pswd`,`time`) VALUES('%s','%s','%s')",user,pswd,GetTime().c_str());
+			mysql_real_query(&mySql ,sqlstmt ,strlen(sqlstmt));
+			re = LGE_none;
 		}
-		catch(const sql::SQLException& e)
-		{
-			printf("%s",e.getSQLState().c_str());
-			re = LGE_unkown;
-		}
-		delete reshead;
-		delete stmt;
-		delete conn;
 		return re;
 	}
 
-	sql::Connection* LoginDB::connect()
+	void LoginDB::connect()
 	{
-		sql::mysql::MySQL_Driver* driver = sql::mysql::get_driver_instance();
-		sql::Connection* conn  = driver->connect("localhost:3306","root","root");
-		conn->setSchema("Buddy");
-		return conn;
+		mysql_init(&mySql);
+		mysql_real_connect(&mySql,"127.0.0.1","root" , "root" ,"Buddy",3306 ,NULL,0);
 	}
 
 }

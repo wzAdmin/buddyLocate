@@ -13,6 +13,10 @@
 extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(JNIEnv *env, jobject obj ,
 		jlong utcTime ,jint Latitude ,jint Longitude,jint Accuracy,jint Altitude ,jint Speed)
 {
+	static long long LastuploadTime = 0;
+	if(utcTime - LastuploadTime < 1000)
+		return;
+	LastuploadTime = utcTime;
 	Common::SendGps sendData;
 	sendData.location.Accuracy = Accuracy;
 	sendData.location.Altitude = Altitude;

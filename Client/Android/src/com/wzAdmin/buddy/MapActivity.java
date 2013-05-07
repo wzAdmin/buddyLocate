@@ -11,7 +11,6 @@ import com.amap.api.maps.SupportMapFragment;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 public class MapActivity extends FragmentActivity implements 
 LocationSource, AMapLocationListener {
