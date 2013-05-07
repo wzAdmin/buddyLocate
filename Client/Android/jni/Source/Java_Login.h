@@ -11,7 +11,7 @@
 #include"Net/LoginCallBack.h"
 #include"Net/LoginHelper.h"
 
-class JavaLogin : public LoginHelper ,public ILoginCallBack
+class JavaLogin : public Net::LoginHelper ,public ILoginCallBack
 {
 public:
 	static JavaLogin* Intance();

@@ -101,7 +101,7 @@ namespace Net
 
 	void LoginHelper::ConnectServer()
 	{
-		mServer->Connect("192.168.1.145",50508,NULL,0);
+		mServer->Connect("192.168.100.100",50508,NULL,0);
 	}
 
 	void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )

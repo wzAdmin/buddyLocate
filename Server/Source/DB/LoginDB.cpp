@@ -96,7 +96,7 @@ namespace DB
 	sql::Connection* LoginDB::connect()
 	{
 		sql::mysql::MySQL_Driver* driver = sql::mysql::get_driver_instance();
-		sql::Connection* conn  = driver->connect("localhost:3307","root","root");
+		sql::Connection* conn  = driver->connect("localhost:3306","root","root");
 		conn->setSchema("Buddy");
 		return conn;
 	}

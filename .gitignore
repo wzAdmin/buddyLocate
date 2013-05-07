@@ -29,3 +29,4 @@ ipch/
 Release/
 Client/build/
 Server/build/
+.settings/
