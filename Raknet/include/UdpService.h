@@ -14,6 +14,7 @@ namespace RakNet
 		virtual ~UdpService();
 		void Start(unsigned int MaxConnectionNum , unsigned short Port = 0);
 		void Stop();
+		RakNet::RakPeerInterface* Peer(){return mServer;}
 	protected:
 		virtual void OnServiceStart(){}
 		virtual void OnServiceStop(){}

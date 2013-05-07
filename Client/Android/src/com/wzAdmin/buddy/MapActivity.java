@@ -11,6 +11,7 @@ import com.amap.api.maps.SupportMapFragment;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 public class MapActivity extends FragmentActivity implements 
 LocationSource, AMapLocationListener {
@@ -67,7 +68,9 @@ LocationSource, AMapLocationListener {
 	public void onLocationChanged(AMapLocation arg0) {
 		// TODO Auto-generated method stub
 		if(mListener != null)
-			mListener.onLocationChanged(arg0);	
+			mListener.onLocationChanged(arg0);
+		this.UploadGps(arg0.getTime(), (int)(arg0.getLatitude()*1000000),(int) (arg0.getLongitude() * 1000000),
+				(int)arg0.getAccuracy(), (int)arg0.getAltitude(), (int)arg0.getSpeed());
 
 	}
 
@@ -79,7 +82,7 @@ LocationSource, AMapLocationListener {
 			mAMapLocationManager = LocationManagerProxy.getInstance(this);
 		}
 		mAMapLocationManager.requestLocationUpdates(
-				LocationProviderProxy.AMapNetwork, 0, 1000, this);
+				LocationProviderProxy.AMapNetwork, 1000, 0, this);
 	}
 
 	@Override
@@ -87,4 +90,6 @@ LocationSource, AMapLocationListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	private native void UploadGps(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed);
 }

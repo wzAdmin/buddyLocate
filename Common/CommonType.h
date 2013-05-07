@@ -202,4 +202,21 @@ namespace Common
 		unsigned int BuddyCount;
 		std::vector<Buddy> Buddies;
 	}REGetBuddies;
+
+	typedef struct _SendGps
+	{
+		_SendGps(){}
+		_SendGps(unsigned char* data , unsigned int len)
+		{
+			BitStream bst(data , len , false);
+			bst.IgnoreBytes(1);
+			bst.Read(location);
+		}
+		void ToBitStream(BitStream& bst)
+		{
+			bst.Write((unsigned char)NETMSG_SENDGPS);
+			bst.Write(location);
+		}
+		GpsInfo location;
+	}SendGps;
 }

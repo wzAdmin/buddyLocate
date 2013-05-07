@@ -11,6 +11,7 @@ namespace Common
 namespace RakNet
 {
 	class NatPunchthroughClient;
+	class BitStream;
 }
 
 namespace Net
@@ -28,6 +29,7 @@ namespace Net
 		const RakNet::RakString& UserID() const { return mUserID; }
 		void UserID(const RakNet::RakString& val) { mUserID = val; }
 		RakNet::SystemAddress MainServerAddress() const { return mMainServerAddress; }
+		void SendBitStream(const RakNet::BitStream* bst);
 	public:
 		const static unsigned int MaxConnectionNum = 30;
 	private:

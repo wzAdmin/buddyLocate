@@ -96,6 +96,7 @@
     <ClCompile Include="..\Source\DB\LoginDB.cpp" />
     <ClCompile Include="..\Source\Main.cpp" />
     <ClCompile Include="..\Source\Net\Action\ACGetBuddy.cpp" />
+    <ClCompile Include="..\Source\Net\Action\ACUploadGps.cpp" />
     <ClCompile Include="..\Source\Net\Action\LoginMain.cpp" />
     <ClCompile Include="..\Source\Net\LoginService.cpp" />
     <ClCompile Include="..\Source\Net\MainServer.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="..\Source\DBConfig.h" />
     <ClInclude Include="..\Source\DB\LoginDB.h" />
     <ClInclude Include="..\Source\Net\Action\ACGetBuddy.h" />
+    <ClInclude Include="..\Source\Net\Action\ACUploadGps.h" />
     <ClInclude Include="..\Source\Net\Action\LoginMain.h" />
     <ClInclude Include="..\Source\Net\LoginService.h" />
     <ClInclude Include="..\Source\Net\MainServer.h" />

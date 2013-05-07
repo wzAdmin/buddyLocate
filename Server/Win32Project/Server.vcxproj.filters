@@ -72,6 +72,9 @@
     <ClCompile Include="..\Source\Net\Action\ACGetBuddy.cpp">
       <Filter>Net\Action</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Net\Action\ACUploadGps.cpp">
+      <Filter>Net\Action</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\DB\LoginDB.h">
@@ -153,6 +156,9 @@
       <Filter>Net\Action</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Net\Action\ACGetBuddy.h">
+      <Filter>Net\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Net\Action\ACUploadGps.h">
       <Filter>Net\Action</Filter>
     </ClInclude>
   </ItemGroup>

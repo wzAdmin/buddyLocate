@@ -89,4 +89,8 @@ namespace Net
 		mServer->Connect(host.C_String() , port ,NULL , 0);
 	}
 
+	void MainClient::SendBitStream(const RakNet::BitStream* bst)
+	{
+		mServer->Send(bst,LOW_PRIORITY,RELIABLE_ORDERED,0,mMainServerAddress,false);
+	}
 }

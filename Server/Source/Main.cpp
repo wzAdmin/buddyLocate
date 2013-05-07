@@ -4,6 +4,7 @@
 #include "Action.h"
 #include "Net/Action/ACGetBuddy.h"
 #include "Net/Action/LoginMain.h"
+#include "Net/Action/ACUploadGps.h"
 #include <stdio.h>
 
 int main()
@@ -13,6 +14,7 @@ int main()
 
 	Net::MainServer::Instance().GetACCreater()->Registe(Common::NETMSG_LOGINMAIN , &Net::LoginMain::Create);
 	Net::MainServer::Instance().GetACCreater()->Registe(Common::NETMSG_GETBUDDIES , &Net::ACGetBuddy::Create);
+	Net::MainServer::Instance().GetACCreater()->Registe(Common::NETMSG_SENDGPS , &Net::ACUploadGps::Create);
 	DB::LoginDB lgdb;
 	//DB::LoginDBError err=lgdb.Login("18664846854","123456");
 	//if(DB::error_user_notexsit == err)
