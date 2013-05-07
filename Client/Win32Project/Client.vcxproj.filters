@@ -30,6 +30,12 @@
     <ClInclude Include="..\Source\Net\LoginCallBack.h">
       <Filter>Net</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Common\Action.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\GpsInfo.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Net\LoginHelper.cpp">
@@ -37,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Action.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

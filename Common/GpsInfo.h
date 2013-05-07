@@ -23,9 +23,11 @@ namespace Common
 		int  Altitude;
 		int  Speed;
 	}GpsInfo;
-
+}
+namespace RakNet
+{
 	template<>
-	inline void RakNet::BitStream::Write(const GpsInfo& gps)
+	inline void RakNet::BitStream::Write(const Common::GpsInfo& gps)
 	{
 		Write(gps.utcTime);
 		Write(gps.Longitude);
@@ -36,7 +38,7 @@ namespace Common
 	}
 
 	template<>
-	inline bool RakNet::BitStream::Read(GpsInfo& gps)
+	inline bool RakNet::BitStream::Read(Common::GpsInfo& gps)
 	{
 		return Read(gps.utcTime)&&\
 			Read(gps.Longitude)&&\

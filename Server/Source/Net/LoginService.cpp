@@ -5,7 +5,7 @@
 #include "DB/LoginDB.h"
 #include "CommonType.h"
 #include "BitStream.h"
-
+#include "MainServer.h"
 
 using namespace Common;
 namespace Net
@@ -42,34 +42,37 @@ namespace Net
 	void LoginService::Login( const RakNet::Packet* pack )
 	{
 		printf("IP:%s want to Login\n",pack->systemAddress.ToString());
-		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
-		char user[256] ;
-		char pswd[256] ;
-		bst.Read(user);
-		bst.Read(pswd);
+		Common::Login bst(pack->data , pack->bitSize);
 		DB::LoginDB lgdb;
-		LoginError err = lgdb.Login(user , pswd);
-
+		LoginError err = lgdb.Login(bst.user.C_String() , bst.pswd.C_String());
+		Common::RELogin relogin;
+		relogin.result = (unsigned char)err;
 		RakNet::BitStream bstsd;
-		bstsd.Write((RakNet::MessageID)NETMSG_LOGIN);
-		bstsd.Write((unsigned char) err);
+		if(LGE_none == err)
+		{
+			relogin.MainServer = "192.168.100.100";
+			relogin.port = MainServer::Port;
+		}
+		relogin.ToBitStream(bstsd);
 		mServer->Send(&bstsd,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,pack->systemAddress,false);
 	}
 
 	void LoginService::Register( const RakNet::Packet* pack)
 	{	
 		printf("IP:%s want to Register\n",pack->systemAddress.ToString());
-		RakNet::BitStream bst(pack->data + 1, pack->bitSize - 1 ,false);
-		char user[256] ;
-		char pswd[256] ;
-		bst.Read(user);
-		bst.Read(pswd);
+		Common::Regsite bst(pack->data, pack->bitSize);
 		DB::LoginDB lgdb;
-		LoginError err = lgdb.Register(user , pswd);	
+		LoginError err = lgdb.Register(bst.user.C_String() , bst.pswd.C_String());	
 		
+		Common::RERegsite re;
+		re.result = err;
 		RakNet::BitStream bstsd;
-		bstsd.Write((RakNet::MessageID)NETMSG_REGISTE);
-		bstsd.Write((unsigned char) err);
+		if(LGE_none == err)
+		{
+			re.MainServer = "192.168.100.100";
+			re.port = MainServer::Port;
+		}
+		re.ToBitStream(bstsd);
 		mServer->Send(&bstsd,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,pack->systemAddress,false);
 	}
 
