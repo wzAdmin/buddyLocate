@@ -28,7 +28,7 @@ namespace Net
 		Common::ActionCreater* GetACCreater(){return mAcCreater;}
 		UserAdressTable* GetUserAdressTable(){return mUserTable;}
 	private:
-		virtual void Update(const RakNet::Packet* pack);
+		virtual void Update( RakNet::Packet* pack);
 		virtual void OnServiceStart();
 		virtual void OnServiceStop();
 

@@ -22,7 +22,7 @@ namespace Net
 		void Login(const char* user , const char* pswd);
 		void Register(const char* user , const char* pswd);
 	private:
-		virtual void Update(const RakNet::Packet* pack);
+		virtual void Update( RakNet::Packet* pack);
 		void ConnectServer();
 		void OnLoginDone( const RakNet::Packet* pack);
 		void OnRegisterDone( const RakNet::Packet* pack);

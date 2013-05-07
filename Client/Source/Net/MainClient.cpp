@@ -2,6 +2,7 @@
 #include "NatPunchthroughClient.h"
 #include "Action.h"
 #include "RakPeerInterface.h"
+#include "Trace.h"
 
 namespace Net
 {
@@ -23,10 +24,26 @@ namespace Net
 		return ins;
 	}
 
-	void MainClient::Update( const RakNet::Packet* pack )
+	void MainClient::Update(  RakNet::Packet* pack )
 	{
 		switch(pack->data[0])
 		{
+		case ID_NEW_INCOMING_CONNECTION:
+			LOG_Trace(LOG_INFO,"Login","New Connect %s\n" , pack->systemAddress.ToString());
+			break;
+		case ID_DISCONNECTION_NOTIFICATION:
+		case ID_CONNECTION_LOST:
+			LOG_Trace(LOG_INFO,"Login","mainConnect LOST\n");
+			break;
+		case ID_NAT_PUNCHTHROUGH_SUCCEEDED:
+			{
+				char ipaddress[256] = {0};
+				pack->systemAddress.ToString(false , ipaddress);
+				LOG_Trace(LOG_INFO,"Login","NAT_PUNCHTHROUGH to %s Success\n",pack->systemAddress.ToString());
+				if(pack->data[1])
+					mServer->Connect(ipaddress , pack->systemAddress.GetPort() , NULL , 0);
+				break;
+			}
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 			Common::LoginMain lgm;
 			lgm.user = mUserID;
@@ -40,8 +57,11 @@ namespace Net
 		{
 			Common::Action* ac = mAcCreater->CreateAction(Common::NetMessage(pack->data[0]) ,
 				mServer , pack);
-			mWorkers.AddInput(&MainClient::UerCallBack, ac );
+			if(ac)
+				mWorkers.AddInput(&MainClient::UerCallBack, ac );
 		}
+		else
+			mServer->DeallocatePacket(pack);
 	}
 
 	void MainClient::OnServiceStart()

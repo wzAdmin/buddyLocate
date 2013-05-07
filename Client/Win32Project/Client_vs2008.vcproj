@@ -88,6 +88,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy /y $(OutDir)\$(ProjectName).exe $(SolutionDir)..\\build\\"
 			/>
 		</Configuration>
 		<Configuration
@@ -217,6 +218,26 @@
 				RelativePath="..\Source\Net\MainClient.h"
 				>
 			</File>
+			<Filter
+				Name="Action"
+				>
+				<File
+					RelativePath="..\Source\Net\Action\AcGetBuddies.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\AcGetBuddies.h"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\AcMainLogin.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\AcMainLogin.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Common"

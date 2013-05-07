@@ -35,7 +35,8 @@ namespace Net
 		if(mUserAdress.end() == it)
 			return RakNet::UNASSIGNED_RAKNET_GUID;
 		else
-			return mPeer->GetGUIDFromIndex(it->second);
+			return mPeer->GetGuidFromSystemAddress(
+			mPeer->GetSystemAddressFromIndex(it->second));
 	}
 
 }

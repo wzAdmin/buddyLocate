@@ -27,10 +27,11 @@ namespace Net
 		void ConnectServer(const RakNet::RakString& host , unsigned short port);
 		const RakNet::RakString& UserID() const { return mUserID; }
 		void UserID(const RakNet::RakString& val) { mUserID = val; }
+		RakNet::SystemAddress MainServerAddress() const { return mMainServerAddress; }
 	public:
 		const static unsigned int MaxConnectionNum = 30;
 	private:
-		virtual void Update(const RakNet::Packet* pack);
+		virtual void Update( RakNet::Packet* pack);
 		virtual void OnServiceStart();
 		virtual void OnServiceStop();
 

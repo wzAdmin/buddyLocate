@@ -43,7 +43,6 @@ namespace RakNet
 			while (p = LgS->mServer->Receive())
 			{
 				LgS->Update(p);
-				LgS->mServer->DeallocatePacket(p);
 			}
 			LgS->mQuitEvent.WaitOnEvent(10);
 		}

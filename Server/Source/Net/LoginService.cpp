@@ -24,7 +24,7 @@ namespace Net
 	{
 	}
 
-	void LoginService::Update( const RakNet::Packet* pack )
+	void LoginService::Update( RakNet::Packet* pack )
 	{
 		switch(pack->data[0])
 		{
@@ -37,6 +37,7 @@ namespace Net
 		default:
 			break;
 		}
+		mServer->DeallocatePacket(pack);
 	}
 
 	void LoginService::Login( const RakNet::Packet* pack )
@@ -50,7 +51,7 @@ namespace Net
 		RakNet::BitStream bstsd;
 		if(LGE_none == err)
 		{
-			relogin.MainServer = "127.0.0.1";
+			relogin.MainServer = "192.168.1.145";
 			relogin.port = MainServer::Port;
 		}
 		relogin.ToBitStream(bstsd);
@@ -69,7 +70,7 @@ namespace Net
 		RakNet::BitStream bstsd;
 		if(LGE_none == err)
 		{
-			re.MainServer = "127.0.0.1";
+			re.MainServer = "192.168.1.145";
 			re.port = MainServer::Port;
 		}
 		re.ToBitStream(bstsd);

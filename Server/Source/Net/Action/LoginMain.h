@@ -8,9 +8,9 @@ namespace Net
 	{
 	public:
 		static Common::Action* Create(RakNet::RakPeerInterface* Peer,
-			const RakNet::Packet* pket){ return new LoginMain(Peer , pket);}
+			 RakNet::Packet* pket){ return new LoginMain(Peer , pket);}
 		LoginMain(RakNet::RakPeerInterface* Peer,
-			const RakNet::Packet* pket) : Action(Peer,pket){}
+			 RakNet::Packet* pket) : Action(Peer,pket){}
 	private:
 		virtual void doWork();
 		virtual Common::NetMessage GetMessageID() {return Common::NETMSG_LOGINMAIN;}

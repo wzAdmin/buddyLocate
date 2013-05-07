@@ -39,7 +39,7 @@ namespace Net
 		mUserTable = NULL;
 	}
 
-	void MainServer::Update( const RakNet::Packet* pack )
+	void MainServer::Update( RakNet::Packet* pack )
 	{
 		if(pack->data[0] >= Common::NETMSG_BEGIN && pack->data[0] < Common::NETMSG_END)
 		{
@@ -47,6 +47,10 @@ namespace Net
 				mServer , pack);
 			if(ac)
 				mWorkers.AddInput(&MainServer::UerCallBack, ac );
+		}
+		else
+		{
+			mServer->DeallocatePacket(pack);
 		}
 	}
 

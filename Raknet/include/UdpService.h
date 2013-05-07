@@ -17,7 +17,7 @@ namespace RakNet
 	protected:
 		virtual void OnServiceStart(){}
 		virtual void OnServiceStop(){}
-		virtual void Update(const RakNet::Packet* pack) = 0;
+		virtual void Update( RakNet::Packet* pack) = 0;
 		static  RAK_THREAD_DECLARATION(ThreadFunc);
 	protected:
 		RakNet::RakPeerInterface* mServer;

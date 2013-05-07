@@ -62,7 +62,7 @@ namespace Net
 		}
 	}
 
-	void LoginHelper::Update( const RakNet::Packet* pack )
+	void LoginHelper::Update( RakNet::Packet* pack )
 	{
 		switch(pack->data[0])
 		{
@@ -91,6 +91,7 @@ namespace Net
 			OnRegisterDone(pack);
 			break;
 		}
+		mServer->DeallocatePacket(pack);
 	}
 
 	LoginHelper::LoginHelper():mConnected(false),mAfterConn(NOTHING),mCallBack(NULL)
@@ -100,7 +101,7 @@ namespace Net
 
 	void LoginHelper::ConnectServer()
 	{
-		mServer->Connect("127.0.0.1",50508,NULL,0);
+		mServer->Connect("192.168.1.145",50508,NULL,0);
 	}
 
 	void LoginHelper::OnLoginDone(  const RakNet::Packet* pack )

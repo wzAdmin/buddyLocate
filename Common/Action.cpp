@@ -1,9 +1,10 @@
 #include "Action.h"
+#include "RakPeerInterface.h"
 
 namespace Common
 {
 	Action* ActionCreater::CreateAction( NetMessage messageID ,RakNet::RakPeerInterface* Peer,
-		const RakNet::Packet* pket)
+		 RakNet::Packet* pket)
 	{
 		CreaterIt it = mCreaters.find(messageID);
 		if(mCreaters.end() == it)
@@ -18,4 +19,10 @@ namespace Common
 		if(mCreaters.end() == it)
 			mCreaters.insert(std::pair<NetMessage , Creater>(id , createfunc));
 	}
+
+	Action::~Action()
+	{
+		mPeer->DeallocatePacket(mpket);
+	}
+
 }

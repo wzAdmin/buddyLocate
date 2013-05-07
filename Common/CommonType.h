@@ -176,7 +176,8 @@ namespace Common
 			BitStream bst(data,len,false);
 			bst.IgnoreBytes(1);
 			Buddy bd;
-			while (len > bst.GetReadOffset())
+			bst.Read(BuddyCount);
+			for (unsigned int i  =0; i < 1 ; i++)
 			{
 				bst.Read(bd.userid);
 				bst.Read(bd.gps);
@@ -187,7 +188,9 @@ namespace Common
 		}
 		void ToBitStream(BitStream& bst)
 		{
-			bst.Write((unsigned char)NETMSG_GETBUDDIES);
+			bst.Write((unsigned char)NETMSG_GETBUDDIES);	
+			BuddyCount = Buddies.size();
+			bst.Write(BuddyCount);
 			for (unsigned int i = 0 ;i < Buddies.size() ; i++)
 			{
 				bst.Write(Buddies[i].userid);
@@ -196,6 +199,7 @@ namespace Common
 				bst.Write(Buddies[i].userAddress);
 			}
 		}
+		unsigned int BuddyCount;
 		std::vector<Buddy> Buddies;
 	}REGetBuddies;
 }

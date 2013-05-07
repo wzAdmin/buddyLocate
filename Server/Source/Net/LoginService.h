@@ -15,7 +15,7 @@ namespace Net
 	private:
 		LoginService();
 		~LoginService();
-		virtual void Update(const RakNet::Packet* pack);
+		virtual void Update(RakNet::Packet* pack);
 		void Login(const RakNet::Packet* pack);
 		void Register(const RakNet::Packet* pack);
 	public:
