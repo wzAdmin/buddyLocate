@@ -8,6 +8,8 @@ namespace Net
 {
 	void Net::ACGetBuddy::doWork()
 	{
+
+		// TODO there need do the actually things
 		Common::REGetBuddies rebds;
 		Common::Buddy bd;
 		bd.userid = "18664876864";

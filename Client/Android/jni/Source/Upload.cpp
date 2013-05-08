@@ -1,5 +1,5 @@
 /*
- * UploadLocation.cpp
+ * Upload.cpp
  *
  *  Created on: 2013-5-7
  *      Author: WoodHome
@@ -26,5 +26,18 @@ extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(J
 	sendData.location.utcTime = utcTime;
 	RakNet::BitStream bst;
 	sendData.ToBitStream(bst);
+	Net::MainClient::Instance().SendBitStream(&bst);
+}
+
+extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_utils_NetUtils_UploadContact(JNIEnv *env, jobject obj ,
+		jlongArray contacts )
+{
+	jlong* value =	env->GetLongArrayElements(contacts,NULL);
+	int length = env->GetArrayLength(contacts);
+	Common::SendContacts sc;
+	for(int i = 0 ;i < length ; i ++)
+		sc.Contacts.push_back(value[i]);
+	RakNet::BitStream bst;
+	sc.ToBitStream(bst);
 	Net::MainClient::Instance().SendBitStream(&bst);
 }

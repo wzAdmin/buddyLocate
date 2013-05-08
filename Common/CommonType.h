@@ -26,6 +26,7 @@ namespace Common
 		NETMSG_LOGINMAIN,
 		NETMSG_GETBUDDIES,
 		NETMSG_GETADRESS,
+		NETMSG_SENDCONTACTS,
 
 		NETMSG_END,
 	};
@@ -219,4 +220,29 @@ namespace Common
 		}
 		GpsInfo location;
 	}SendGps;
+
+	typedef struct _SendContacts 
+	{
+		_SendContacts(){}
+		_SendContacts(unsigned char* data , unsigned int len)
+		{
+			BitStream bst(data , len , false);
+			bst.IgnoreBytes(1);
+			unsigned int count = 0;
+			bst.Read(count);
+			Contacts.resize(count);
+			for (unsigned int i =0; i < count;i++)
+			{
+				bst.Read(Contacts[i]);
+			}
+		}
+		void ToBitStream(BitStream& bst)
+		{
+			bst.Write(NETMSG_SENDCONTACTS);
+			bst.Write(Contacts.size());
+			for(unsigned int i =0 ;i < Contacts.size() ; i++)
+				bst.Write(Contacts[i]);
+		}
+		std::vector<long long> Contacts;
+	}SendContacts;
 }
