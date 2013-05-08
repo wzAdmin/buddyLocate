@@ -2,6 +2,7 @@
 package com.wzAdmin.buddy.utils;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,7 @@ public class PhoneUtils {
 	Context mContext; 
 
 	private PhoneUtils(Context context ){
+		mPhoneData = new ArrayList< Map< String , Object> >();
 		mContext = context;
 		loadContact(context);
 	}

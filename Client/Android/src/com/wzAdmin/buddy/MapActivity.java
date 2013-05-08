@@ -8,9 +8,13 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.SupportMapFragment;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MapActivity extends FragmentActivity implements 
 LocationSource, AMapLocationListener {
@@ -36,6 +40,16 @@ LocationSource, AMapLocationListener {
 					.getInstance(MapActivity.this);
 			aMap.setLocationSource(this);
 			aMap.setMyLocationEnabled(true);
+			
+			Button mycontact = (Button)this.findViewById(R.id.phonecantacts);
+			mycontact.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View arg0) {
+					startActivity(new Intent(MapActivity.this,ContactsActivity.class));
+				}
+				
+			});
 		}
 	}
 

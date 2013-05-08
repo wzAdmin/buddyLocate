@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     
     <application
         android:allowBackup="true"
@@ -46,6 +47,9 @@
             android:name="com.wzAdmin.buddy.MapActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="map" />
+        <activity
+            android:name="com.wzAdmin.buddy.ContactsActivity"
+            android:label="联系人" />
     </application>
 
 </manifest>
