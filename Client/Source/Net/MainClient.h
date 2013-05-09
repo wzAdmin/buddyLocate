@@ -36,14 +36,11 @@ namespace Net
 		virtual void Update( RakNet::Packet* pack);
 		virtual void OnServiceStart();
 		virtual void OnServiceStop();
-
-		static int UerCallBack(Common::Action* ac, bool *returnOutput, void* perThreadData);
 		
 		RakNet::RakString mUserID;
 		RakNet::SystemAddress mMainServerAddress;
 		RakNet::NatPunchthroughClient* mNpc;
 		Common::ActionCreater* mAcCreater;
-		ThreadPool<Common::Action* , int> mWorkers;
 
 		const static unsigned int MaxWorkthreads = 10;
 	};
