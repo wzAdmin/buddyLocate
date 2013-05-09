@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="mysqlcppconn.lib RakNet.lib"
+				AdditionalDependencies="libmysql.lib RakNet.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../lib;&quot;$(OutDir)&quot;"
 				GenerateDebugInformation="true"
@@ -139,7 +139,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="mysqlcppconn.lib RakNet.lib"
+				AdditionalDependencies="libmysql.lib RakNet.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../lib;&quot;$(OutDir)&quot;"
 				GenerateDebugInformation="true"
@@ -290,6 +290,22 @@
 				</File>
 				<File
 					RelativePath="..\Source\Net\Action\ACGetBuddy.h"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\ACUploadContacts.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\ACUploadContacts.h"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\ACUploadGps.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Source\Net\Action\ACUploadGps.h"
 					>
 				</File>
 				<File
