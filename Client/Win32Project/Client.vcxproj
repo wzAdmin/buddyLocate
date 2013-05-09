@@ -89,12 +89,18 @@
     <ClInclude Include="..\..\Common\Action.h" />
     <ClInclude Include="..\..\Common\CommonType.h" />
     <ClInclude Include="..\..\Common\GpsInfo.h" />
+    <ClInclude Include="..\Source\Net\Action\AcGetBuddies.h" />
+    <ClInclude Include="..\Source\Net\Action\AcMainLogin.h" />
     <ClInclude Include="..\Source\Net\LoginCallBack.h" />
     <ClInclude Include="..\Source\Net\LoginHelper.h" />
+    <ClInclude Include="..\Source\Net\MainClient.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Common\Action.cpp" />
+    <ClCompile Include="..\Source\Net\Action\AcGetBuddies.cpp" />
+    <ClCompile Include="..\Source\Net\Action\AcMainLogin.cpp" />
     <ClCompile Include="..\Source\Net\LoginHelper.cpp" />
+    <ClCompile Include="..\Source\Net\MainClient.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
