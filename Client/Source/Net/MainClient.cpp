@@ -58,7 +58,10 @@ namespace Net
 			Common::Action* ac = mAcCreater->CreateAction(Common::NetMessage(pack->data[0]) ,
 				mServer , pack);
 			if(ac)
-				mWorkers.AddInput(&MainClient::UerCallBack, ac );
+			{
+				ac->doWork();
+				delete ac;
+			}
 		}
 		else
 			mServer->DeallocatePacket(pack);
@@ -67,22 +70,13 @@ namespace Net
 	void MainClient::OnServiceStart()
 	{
 		mServer->AttachPlugin(mNpc);
-		mWorkers.StartThreads(MaxWorkthreads,0,NULL,NULL);
 	}
 
 	void MainClient::OnServiceStop()
 	{
 		mServer->DetachPlugin(mNpc);
-		mWorkers.StopThreads();
 	}
 
-	int MainClient::UerCallBack( Common::Action* ac, bool *returnOutput, void* perThreadData )
-	{
-		ac->doWork();
-		delete ac;
-		*returnOutput = false;
-		return 0 ;
-	}
 
 	void MainClient::ConnectServer( const RakNet::RakString& host , unsigned short port )
 	{

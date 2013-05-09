@@ -89,11 +89,5 @@ public class PhoneUtils {
 		        }
 			}while(cursor.moveToNext());
 		}
-		long[] contacts = new long[mPhoneData.size()];
-		for(int i = 0; i < contacts.length ; i++){
-			String str = (String)mPhoneData.get(i).get(PHONE);
-			contacts[i]=Long.parseLong(str, 10);
-		}
-		NetUtils.UploadContact(contacts);
 	}
 }
