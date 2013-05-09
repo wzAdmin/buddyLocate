@@ -20,7 +20,7 @@ public class REGetBuddy implements IAction {
 	 */
 	@Override
 	public void doWrok() {
-		// TODO Auto-generated method stub
+		// TODO 获取到好友信息后的具体操作
 		Log.i("Buddy","BuddyCount:" + mbuddies.length);
 	}
 	
