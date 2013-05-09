@@ -49,7 +49,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;__LCC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../include;../source;../../RakNet/include;../../Common</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
@@ -73,7 +73,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;__LCC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../include;../source;../../RakNet/include;../../Common</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <DisableSpecificWarnings>4251</DisableSpecificWarnings>
@@ -93,7 +93,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Common\Action.cpp" />
     <ClCompile Include="..\Source\DBConfig.cpp" />
+    <ClCompile Include="..\Source\DB\GpsDB.cpp" />
     <ClCompile Include="..\Source\DB\LoginDB.cpp" />
+    <ClCompile Include="..\Source\DB\MySqlDB.cpp" />
+    <ClCompile Include="..\Source\DB\UserDB.cpp" />
     <ClCompile Include="..\Source\Main.cpp" />
     <ClCompile Include="..\Source\Net\Action\ACGetBuddy.cpp" />
     <ClCompile Include="..\Source\Net\Action\ACUploadContacts.cpp" />
@@ -125,7 +128,10 @@
     <ClInclude Include="..\include\mysql_connection.h" />
     <ClInclude Include="..\include\mysql_driver.h" />
     <ClInclude Include="..\Source\DBConfig.h" />
+    <ClInclude Include="..\Source\DB\GpsDB.h" />
     <ClInclude Include="..\Source\DB\LoginDB.h" />
+    <ClInclude Include="..\Source\DB\MySqlDB.h" />
+    <ClInclude Include="..\Source\DB\UserDB.h" />
     <ClInclude Include="..\Source\Net\Action\ACGetBuddy.h" />
     <ClInclude Include="..\Source\Net\Action\ACUploadContacts.h" />
     <ClInclude Include="..\Source\Net\Action\ACUploadGps.h" />

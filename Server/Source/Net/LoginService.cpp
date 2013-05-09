@@ -3,6 +3,7 @@
 #include "RakSleep.h"
 #include <stdio.h>
 #include "DB/LoginDB.h"
+#include "db/UserDB.h"
 #include "CommonType.h"
 #include "BitStream.h"
 #include "MainServer.h"
@@ -71,6 +72,8 @@ namespace Net
 		RakNet::BitStream bstsd;
 		if(LGE_none == err)
 		{
+			DB::UserDB userdb;
+			userdb.InsertUser(bst.user.C_String() , bst.pswd.C_String());
 			re.MainServer = "192.168.100.100";
 			re.port = MainServer::Port;
 		}

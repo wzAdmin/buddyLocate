@@ -1,7 +1,5 @@
 LOCAL_PATH := $(call my-dir)
 
-LOCAL_PATH := $(call my-dir)
-
 ###########################################################
 ## Find all of files under the named directories.
 ###########################################################

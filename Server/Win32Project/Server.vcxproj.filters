@@ -78,6 +78,15 @@
     <ClCompile Include="..\Source\Net\Action\ACUploadContacts.cpp">
       <Filter>Net\Action</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\DB\MySqlDB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\DB\UserDB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\DB\GpsDB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\DB\LoginDB.h">
@@ -166,6 +175,15 @@
     </ClInclude>
     <ClInclude Include="..\Source\Net\Action\ACUploadContacts.h">
       <Filter>Net\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\DB\MySqlDB.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\DB\UserDB.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\DB\GpsDB.h">
+      <Filter>DB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
