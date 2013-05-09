@@ -89,6 +89,5 @@ public class PhoneUtils {
 		        }
 			}while(cursor.moveToNext());
 		}
-
 	}
 }
