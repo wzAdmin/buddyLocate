@@ -1,4 +1,13 @@
-﻿USE buddy
+
+CREATE SCHEMA `Buddy` DEFAULT CHARACTER SET utf8 ;
+CREATE  TABLE `buddy`.`Login` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `user` VARCHAR(45) NULL ,
+  `pswd` VARCHAR(45) NULL ,
+  `time` DATETIME NULL ,
+  PRIMARY KEY (`id`) )
+DEFAULT CHARACTER SET = utf8;
+
 CREATE TABLE buddy.user(
   user VARCHAR(45) NOT NULL ,
   pwd VARCHAR(45) NOT NULL ,
