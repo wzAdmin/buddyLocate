@@ -23,7 +23,7 @@ namespace RakNet
 		RakNet::SocketDescriptor sdp(Port,NULL);
 		sdp.socketFamily = AF_INET;
 		RakNet::StartupResult res = mServer->Startup(MaxConnectionNum,&sdp,1);
-		mServer->SetMaximumIncomingConnections(MaxConnectionNum);
+		mServer->SetMaximumIncomingConnections((unsigned short)MaxConnectionNum);
 		mServer->SetOccasionalPing(true);
 		RakAssert(res == RakNet::RAKNET_ALREADY_STARTED || res == RakNet::RAKNET_STARTED);
 		RakNet::RakThread::Create(ThreadFunc,this);
@@ -40,7 +40,7 @@ namespace RakNet
 		LgS->OnServiceStart();
 		while (LgS->bRuning)
 		{
-			while (p = LgS->mServer->Receive())
+			while (NULL != (p = LgS->mServer->Receive()))
 			{
 				LgS->Update(p);
 			}
