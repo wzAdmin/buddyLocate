@@ -47,10 +47,14 @@ namespace DB
 		if(res->row_count)
 		{
 			memcpy(tableName , res->row[0] ,strlen(res->row[0]));
+			mysql_free_result(res);
 			return tableName;
 		}
 		else
+		{
+			mysql_free_result(res);
 			return NULL;
+		}
 	}
 
 	char* UserDB::QueryContactTableName( const char* user , char* tableName )
@@ -65,10 +69,14 @@ namespace DB
 		if(res->row_count)
 		{
 			memcpy(tableName , res->row[0] ,strlen(res->row[0]));
+			mysql_free_result(res);
 			return tableName;
 		}
 		else
+		{
+			mysql_free_result(res);
 			return NULL;
+		}
 	}
 
 }

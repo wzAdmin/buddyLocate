@@ -66,6 +66,7 @@ namespace DB
 			mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
 			re = LGE_none;
 		}
+		mysql_free_result(res);
 		return re;
 	}
 }

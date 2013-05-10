@@ -5,11 +5,14 @@ namespace DB
 {
 	class GpsDB
 	{
-	public:
-		GpsDB(void);
+	private:
+		GpsDB();
 		~GpsDB(void);
 	public:
-		Common::GpsInfo QueryGpsInfo(const char* user);
+		static char* Create(const char* user , char* tableName);
+		static bool QueryGpsInfo(const char* user ,Common::GpsInfo& gps);
+		static void Insert( const char* user ,const Common::GpsInfo& gps);
+		static char* getTableName(const char* user ,char* tableName);
 	};
 }
 

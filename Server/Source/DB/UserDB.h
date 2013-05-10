@@ -4,13 +4,13 @@ namespace DB
 {
 	class UserDB
 	{
-	public:
+	private:
 		UserDB(void);
 		~UserDB(void);
 	public:
-		void InsertUser(const char* user , const char* pswd);
-		char* QueryGpsTableName(const char* user , char* tableName);
-		char* QueryContactTableName(const char* user , char* tableName);
+		static void InsertUser(const char* user , const char* pswd);
+		static char* QueryGpsTableName(const char* user , char* tableName);
+		static char* QueryContactTableName(const char* user , char* tableName);
 	};
 }
 
