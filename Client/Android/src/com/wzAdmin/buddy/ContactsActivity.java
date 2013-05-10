@@ -3,6 +3,7 @@ package com.wzAdmin.buddy;
 import java.util.List;
 import java.util.Map;
 
+import com.wzAdmin.buddy.net.NetUtils;
 import com.wzAdmin.buddy.utils.PhoneUtils;
 
 import android.app.Activity;
@@ -96,6 +97,7 @@ public class ContactsActivity extends Activity {
 		mListView = new ListView(this);
 		mListView.setAdapter(madapter);
 		setContentView(mListView);
+		NetUtils.getInstance(this).UploadContact();
 	}
 	
 	

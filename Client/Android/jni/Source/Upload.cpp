@@ -9,6 +9,8 @@
 #include "Net/MainClient.h"
 #include "RakPeerInterface.h"
 #include "CommonType.h"
+#include "Trace.h"
+#include <stdlib.h>
 
 extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(JNIEnv *env, jobject obj ,
 		jlong utcTime ,jint Latitude ,jint Longitude,jint Accuracy,jint Altitude ,jint Speed)
@@ -29,15 +31,22 @@ extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(J
 	Net::MainClient::Instance().SendBitStream(&bst);
 }
 
-extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_utils_NetUtils_UploadContact(JNIEnv *env, jobject obj ,
-		jlongArray contacts )
+extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_net_NetUtils_UploadContact(JNIEnv *env, jobject obj ,
+		jobjectArray contacts )
 {
-	jlong* value =	env->GetLongArrayElements(contacts,NULL);
 	int length = env->GetArrayLength(contacts);
 	Common::SendContacts sc;
+	char name[64]={0};
 	for(int i = 0 ;i < length ; i ++)
-		sc.Contacts.push_back(value[i]);
+	{
+		jstring name= (jstring) env->GetObjectArrayElement(contacts , i);
+		const char* utfname = env->GetStringUTFChars(name , 0);
+		sc.Contacts.push_back(utfname);
+		env->ReleaseStringUTFChars(name , utfname);
+	}
 	RakNet::BitStream bst;
 	sc.ToBitStream(bst);
+
+	LOG_Trace(LOG_INFO,"UPLOAD","Length :%d\n",length);
 	Net::MainClient::Instance().SendBitStream(&bst);
 }

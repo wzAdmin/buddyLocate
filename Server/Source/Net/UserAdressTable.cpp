@@ -22,7 +22,11 @@ namespace Net
 		{
 			UserIt it = mUserAdress.find(userid);
 			if(mUserAdress.end() == it)
+			{
 				mUserAdress.insert(std::pair<RakNet::RakString , int> (userid , index));
+				mGUIDtoUser.insert(std::pair<RakNet::RakNetGUID , RakNet::RakString>
+					(mPeer->GetGUIDFromIndex(index),userid));
+			}
 			else
 				it->second = index;
 		}
@@ -37,6 +41,17 @@ namespace Net
 		else
 			return mPeer->GetGuidFromSystemAddress(
 			mPeer->GetSystemAddressFromIndex(it->second));
+	}
+
+	const char* UserAdressTable::GetUser( const RakNet::RakNetGUID& guid )
+	{
+		Common::AutoMutex automutex(&mMutex);
+		GUIDIt it = mGUIDtoUser.find(guid);
+		if(mGUIDtoUser.end() == it)
+			return NULL;
+		else
+			return it->second.C_String();
+			
 	}
 
 }

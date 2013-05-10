@@ -93,6 +93,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Common\Action.cpp" />
     <ClCompile Include="..\Source\DBConfig.cpp" />
+    <ClCompile Include="..\Source\DB\ContactDB.cpp" />
     <ClCompile Include="..\Source\DB\GpsDB.cpp" />
     <ClCompile Include="..\Source\DB\LoginDB.cpp" />
     <ClCompile Include="..\Source\DB\MySqlDB.cpp" />
@@ -111,23 +112,8 @@
     <ClInclude Include="..\..\Common\Action.h" />
     <ClInclude Include="..\..\Common\CommonType.h" />
     <ClInclude Include="..\..\Common\GpsInfo.h" />
-    <ClInclude Include="..\include\cppconn\build_config.h" />
-    <ClInclude Include="..\include\cppconn\config.h" />
-    <ClInclude Include="..\include\cppconn\connection.h" />
-    <ClInclude Include="..\include\cppconn\datatype.h" />
-    <ClInclude Include="..\include\cppconn\driver.h" />
-    <ClInclude Include="..\include\cppconn\exception.h" />
-    <ClInclude Include="..\include\cppconn\metadata.h" />
-    <ClInclude Include="..\include\cppconn\parameter_metadata.h" />
-    <ClInclude Include="..\include\cppconn\prepared_statement.h" />
-    <ClInclude Include="..\include\cppconn\resultset.h" />
-    <ClInclude Include="..\include\cppconn\resultset_metadata.h" />
-    <ClInclude Include="..\include\cppconn\sqlstring.h" />
-    <ClInclude Include="..\include\cppconn\statement.h" />
-    <ClInclude Include="..\include\cppconn\warning.h" />
-    <ClInclude Include="..\include\mysql_connection.h" />
-    <ClInclude Include="..\include\mysql_driver.h" />
     <ClInclude Include="..\Source\DBConfig.h" />
+    <ClInclude Include="..\Source\DB\ContactDB.h" />
     <ClInclude Include="..\Source\DB\GpsDB.h" />
     <ClInclude Include="..\Source\DB\LoginDB.h" />
     <ClInclude Include="..\Source\DB\MySqlDB.h" />

@@ -32,6 +32,9 @@ public class LoginHandler extends Handler {
     	case LoginHelper.LGE_user_existed:
     		loginfo.setText(R.string.user_existed);
     		break;
+    	case LoginHelper.LGE_cannotconnect:
+    		loginfo.setText(R.string.cantconnect);
+    		break;
     	}
     }
 }

@@ -15,6 +15,9 @@ import android.content.Context;
  *
  */
 public class NetUtils {
+	static {
+		System.loadLibrary("Client");
+	}
 	static NetUtils mInstance = null;
 	Context mContext;
 	private NetUtils(Context context){
@@ -28,10 +31,14 @@ public class NetUtils {
 	}
 	public void UploadContact(){
 		List< Map< String , Object> > PhoneData = PhoneUtils.getInstance(mContext).getContacts();
-		long[] contacts = new long[PhoneData.size()];
+		String[] contacts = new String[PhoneData.size()];
 		for(int i = 0; i < contacts.length ; i++){
-			String str = (String)PhoneData.get(i).get(PhoneUtils.PHONE);
-			contacts[i]=Long.parseLong(str, 10);
+			String num = (String)PhoneData.get(i).get(PhoneUtils.PHONE);
+			if(num.length() > 11)
+			{
+				num = num.substring(num.length() - 11);
+			}
+			contacts[i] = num ;
 		}
 		UploadContact(contacts);
 	}
@@ -39,5 +46,5 @@ public class NetUtils {
 	
 	
 	
-	public native void UploadContact(long[] contacts);
+	public native void UploadContact(String[] contacts);
 }

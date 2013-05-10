@@ -2,11 +2,12 @@
 
 #include "UdpService.h"
 #include "RakNetTypes.h"
+#include "MainClient.h"
 
-class ILoginCallBack;
 
 namespace Net
 {
+	class ILoginCallBack;
 	class LoginHelper : public RakNet::UdpService
 	{
 		enum AfterConnect
@@ -18,7 +19,7 @@ namespace Net
 	public:
 		LoginHelper();
 		~LoginHelper(){}
-		void SetCallBack(ILoginCallBack* cb){mCallBack = cb;}
+		void SetCallBack(ILoginCallBack* cb){MainClient::Instance().mCallBack = cb;}
 		void Login(const char* user , const char* pswd);
 		void Register(const char* user , const char* pswd);
 	private:
@@ -27,7 +28,6 @@ namespace Net
 		void OnLoginDone( const RakNet::Packet* pack);
 		void OnRegisterDone( const RakNet::Packet* pack);
 
-		ILoginCallBack* mCallBack;
 		char mUser[256];
 		char mPswd[256];
 		AfterConnect mAfterConn;

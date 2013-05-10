@@ -1,6 +1,7 @@
 #include "LoginDB.h"
 #include "Platform/platform.h"
 #include "MySqlDB.h"
+#include "UserDB.h"
 
 using namespace Common;
 namespace DB
@@ -23,7 +24,7 @@ namespace DB
 		MYSQL* db = MySqlDB::GetInstance().getMysql();
 		mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
 		MYSQL_RES* res = mysql_store_result(db);
-		if(res->row_count)
+		if(res && res->row_count)
 		{
 			MYSQL_ROW row = mysql_fetch_row(res);
 			std::string str(pswd);
@@ -58,13 +59,14 @@ namespace DB
 		MYSQL* db = MySqlDB::GetInstance().getMysql();
 		mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
 		MYSQL_RES* res = mysql_store_result(db);
-		if(res->row_count)
+		if( res && res->row_count)
 			re = LGE_user_existed;
 		else
 		{
-			sprintf(sqlstmt,"INSERT INTO Login (`user`,`pswd`,`time`) VALUES('%s','%s','%s')",user,pswd,GetTime().c_str());
+			sprintf(sqlstmt,"INSERT INTO Login (`user`,`pswd`,`time`) VALUES( '%s' , '%s' ,'%s')",user,pswd,GetTime().c_str());
 			mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
 			re = LGE_none;
+			UserDB::InsertUser(user , pswd);
 		}
 		mysql_free_result(res);
 		return re;

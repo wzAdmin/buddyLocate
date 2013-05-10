@@ -25,12 +25,6 @@
     <Filter Include="platform\linux">
       <UniqueIdentifier>{47d38ba3-a299-4ce7-8c2d-301767ca556e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include">
-      <UniqueIdentifier>{5364fa1d-899b-42d0-b857-25a5156cb67b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\cppconn">
-      <UniqueIdentifier>{65bf01a2-cd09-44ce-8b0e-8b54e657f390}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Net">
       <UniqueIdentifier>{a7a3bda4-0b88-4280-b57a-26cdd685546e}</UniqueIdentifier>
     </Filter>
@@ -87,6 +81,9 @@
     <ClCompile Include="..\Source\DB\GpsDB.cpp">
       <Filter>DB</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\DB\ContactDB.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\DB\LoginDB.h">
@@ -97,54 +94,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Platform\platform.h">
       <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\build_config.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\config.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\connection.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\datatype.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\driver.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\exception.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\metadata.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\parameter_metadata.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\prepared_statement.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\resultset.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\resultset_metadata.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\sqlstring.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\statement.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\cppconn\warning.h">
-      <Filter>include\cppconn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\mysql_connection.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\mysql_driver.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Net\LoginService.h">
       <Filter>Net</Filter>
@@ -183,6 +132,9 @@
       <Filter>DB</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\DB\GpsDB.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\DB\ContactDB.h">
       <Filter>DB</Filter>
     </ClInclude>
   </ItemGroup>

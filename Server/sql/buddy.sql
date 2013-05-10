@@ -26,7 +26,6 @@ DEFAULT charset = utf8;
 
 CREATE  TABLE buddy.gpsINfo (
 	id INT NOT NULL AUTO_INCREMENT,
-	user VARCHAR(45) NOT NULL,
 	utcTime BIGINT NOT NULL,
 	latitude INT NOT NULL,
 	longitude INT NOT NULL,
@@ -38,7 +37,6 @@ DEFAULT charset = utf8;
 
 CREATE  TABLE buddy.contact (
 	id INT NOT NULL AUTO_INCREMENT,
-	user VARCHAR(45) NOT NULL ,
 	friend VARCHAR(45) NOT NULL,
 	PRIMARY KEY (id))
 DEFAULT charset = utf8;

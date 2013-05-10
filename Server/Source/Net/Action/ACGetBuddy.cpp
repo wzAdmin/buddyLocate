@@ -2,19 +2,26 @@
 #include "CommonType.h"
 #include "Net/UserAdressTable.h"
 #include "Net/MainServer.h"
+#include "DB/ContactDB.h"
+#include "DB/GpsDB.h"
 #include "RakPeerInterface.h"
 
 namespace Net
 {
 	void Net::ACGetBuddy::doWork()
 	{
-
-		// TODO there need do the actually things
 		Common::REGetBuddies rebds;
 		Common::Buddy bd;
-		bd.userid = "18664876864";
-		bd.userAddress = MainServer::Instance().GetUserAdressTable()->GetUserAdress(bd.userid);
-		bd.NetGuid = MainServer::Instance().GetUserAdressTable()->GetUserNetGUID(bd.userid);
+		const char* Clientuser = MainServer::Instance().GetUserAdressTable()->GetUser(mpket->guid);
+		std::vector<RakNet::RakString> buddies = DB::ContactDB::GetBuddy(Clientuser);
+		for (unsigned int i =0 ;i  < buddies.size() ; i ++)
+		{
+			bd.userid = buddies[i];
+			if(!DB::GpsDB::QueryGpsInfo(Clientuser,bd.gps))
+				bd.gps.utcTime = -1;
+			bd.userAddress = MainServer::Instance().GetUserAdressTable()->GetUserAdress(bd.userid);
+			bd.NetGuid = MainServer::Instance().GetUserAdressTable()->GetUserNetGUID(bd.userid);
+		}
 		RakNet::BitStream bst;
 		rebds.Buddies.push_back(bd);
 		rebds.ToBitStream(bst);

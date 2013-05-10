@@ -10,6 +10,7 @@ namespace Net
 	{
 		mNpc = new RakNet::NatPunchthroughClient;
 		mAcCreater = new Common::ActionCreater;
+		mCallBack = NULL;
 	}
 
 	MainClient::~MainClient(void)
@@ -70,11 +71,17 @@ namespace Net
 	void MainClient::OnServiceStart()
 	{
 		mServer->AttachPlugin(mNpc);
+#ifdef ANDROID
+		AttachThread();
+#endif
 	}
 
 	void MainClient::OnServiceStop()
 	{
 		mServer->DetachPlugin(mNpc);
+#ifdef ANDROID
+		DetachThread();
+#endif
 	}
 
 

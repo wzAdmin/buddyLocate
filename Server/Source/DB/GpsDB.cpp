@@ -33,7 +33,7 @@ namespace DB
 	
 		mysql_real_query(MySqlDB::GetInstance().getMysql(), sqlstmt , strlen(sqlstmt));
 		MYSQL_RES* res = mysql_store_result(MySqlDB::GetInstance().getMysql());
-		if(!res->row_count)
+		if(!res || !res->row_count)
 		{
 			mysql_free_result(res);
 			return false;
@@ -72,7 +72,7 @@ namespace DB
 
 	char* GpsDB::Create( const char* user ,char* tableName)
 	{
-		char sqlstmt[256] = {0};
+		char sqlstmt[512] = {0};
 		sprintf(sqlstmt,"CREATE  TABLE buddy.%s (\
 			`%s` INT NOT NULL AUTO_INCREMENT,\
 			`%s` VARCHAR(45) NOT NULL,\
@@ -96,7 +96,7 @@ namespace DB
 		char tablename[256]={0};
 		getTableName(user,tablename);
 		sprintf(sqlstmt,"INSERT INTO `%s` (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) \
-			VALUES(`%s`,`%lld`,`%d`,`%d`,`%d`,`%d`,`%d`)",
+			VALUES('%s','%lld','%d','%d','%d','%d','%d')",
 			tablename , gpsColumn_user ,gpsColumn_utcTime ,gpsColumn_latitude , gpsColumn_longitude,
 			gpsColumn_accuracy , gpsColumn_altitude ,gpsColumn_speed,
 			user,gps.utcTime ,gps.Latitude,gps.Longitude,gps.Accuracy,gps.Altitude,gps.Speed);

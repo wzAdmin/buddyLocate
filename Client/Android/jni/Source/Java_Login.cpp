@@ -10,6 +10,7 @@
 JavaLogin* g_LoginInstance = NULL;
 JNIEnv* g_Env = NULL;
 JavaVM* g_Jvm = NULL;
+extern JNIEnv* g_mainClienrEnv;
 extern "C" JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
 {
 	g_Jvm = vm;
@@ -70,17 +71,23 @@ void JavaLogin::OnServiceStart()
 
 void JavaLogin::OnServiceStop()
 {
-	mJvm->AttachCurrentThread(&mthreadEnv,NULL);
+	mJvm->DetachCurrentThread();
 }
 
 void JavaLogin::OnLoginReulst(LoginError err)
 {
-	mthreadEnv->CallVoidMethod(mJobj,mOnLoginReulstid,(int)err);
+	if(Common::LGE_none == err)
+		g_mainClienrEnv->CallVoidMethod(mJobj,mOnLoginReulstid,(int)err);
+	else
+		mthreadEnv->CallVoidMethod(mJobj,mOnLoginReulstid,(int)err);
 }
 
 void JavaLogin::OnRegisterResult(LoginError err)
 {
-	mthreadEnv->CallVoidMethod(mJobj,mOnRegisterResultid,(int)err);
+	if(Common::LGE_none == err)
+		g_mainClienrEnv->CallVoidMethod(mJobj,mOnLoginReulstid,(int)err);
+	else
+		mthreadEnv->CallVoidMethod(mJobj,mOnRegisterResultid,(int)err);
 }
 
 JavaLogin* JavaLogin::Intance()

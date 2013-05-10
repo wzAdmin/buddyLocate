@@ -13,6 +13,7 @@ namespace Common
 		LGE_user_notexist,
 		LGE_user_existed,
 		LGE_password_incorrect,
+		LGE_cannotconnect,
 		LGE_unkown
 	};
 	enum NetMessage
@@ -238,11 +239,11 @@ namespace Common
 		}
 		void ToBitStream(BitStream& bst)
 		{
-			bst.Write(NETMSG_SENDCONTACTS);
+			bst.Write((unsigned char)NETMSG_SENDCONTACTS);
 			bst.Write(Contacts.size());
 			for(unsigned int i =0 ;i < Contacts.size() ; i++)
 				bst.Write(Contacts[i]);
 		}
-		std::vector<long long> Contacts;
+		std::vector<RakNet::RakString> Contacts;
 	}SendContacts;
 }

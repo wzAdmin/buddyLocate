@@ -1,15 +1,14 @@
 #include "AcMainLogin.h"
 #include "RakPeerInterface.h"
+#include "Net/LoginCallBack.h"
+#include "Net/MainClient.h"
 
 namespace Net
 {
-
 	void AcMainLogin::doWork()
 	{
-		Common::GetBuddies getbd;
-		RakNet::BitStream bst;
-		getbd.ToBitStream(bst);
-		mPeer->Send(&bst ,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,mpket->systemAddress,false);
+		if(MainClient::Instance().mCallBack)
+			MainClient::Instance().mCallBack->OnLoginReulst(LGE_none);
 	}
 
 }

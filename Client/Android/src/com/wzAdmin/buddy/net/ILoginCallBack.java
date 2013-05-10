@@ -17,5 +17,6 @@ public interface ILoginCallBack {
 	public final static int LGE_user_notexist = 1;
 	public final static int LGE_user_existed = 2;
 	public final static int LGE_password_incorrect = 3;
-	public final static int LGE_unkown = 4;
+	public final static int LGE_cannotconnect = 4;
+	public final static int LGE_unkown = 5;
 }
