@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(JNIEnv *env, jobject obj ,
-		jlong utcTime ,jint Latitude ,jint Longitude,jint Accuracy,jint Altitude ,jint Speed)
+		jlong utcTime ,jint Latitude ,jint Longitude,jint Accuracy,jint Altitude ,jint Speed,jstring address)
 {
 	static long long LastuploadTime = 0;
 	if(utcTime - LastuploadTime < 1000)
@@ -26,6 +26,9 @@ extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(J
 	sendData.location.Longitude = Longitude;
 	sendData.location.Speed = Speed;
 	sendData.location.utcTime = utcTime;
+	const char* utfaddress= env->GetStringUTFChars(address , 0);
+	sendData.location.Address = utfaddress;
+	env->ReleaseStringUTFChars(address , utfaddress);
 	RakNet::BitStream bst;
 	sendData.ToBitStream(bst);
 	Net::MainClient::Instance().SendBitStream(&bst);

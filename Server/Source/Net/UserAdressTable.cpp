@@ -24,11 +24,15 @@ namespace Net
 			if(mUserAdress.end() == it)
 			{
 				mUserAdress.insert(std::pair<RakNet::RakString , int> (userid , index));
-				mGUIDtoUser.insert(std::pair<RakNet::RakNetGUID , RakNet::RakString>
-					(mPeer->GetGUIDFromIndex(index),userid));
 			}
 			else
+			{
 				it->second = index;
+			}
+			GUIDIt git = mGUIDtoUser.find(mPeer->GetGUIDFromIndex(index));
+			if(mGUIDtoUser.end() == git)
+				mGUIDtoUser.insert(std::pair<RakNet::RakNetGUID , RakNet::RakString>
+				(mPeer->GetGUIDFromIndex(index),userid));
 		}
 	}
 

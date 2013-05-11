@@ -5,14 +5,13 @@
 
 namespace DB
 {
+	static const char* gpsTable = "gpsINfo";
 	static const char* gpsColumn_id       = "id";
 	static const char* gpsColumn_user     = "user" ;
 	static const char* gpsColumn_utcTime  = "utcTime";
 	static const char* gpsColumn_latitude = "latitude";
 	static const char* gpsColumn_longitude= "longitude";
-	static const char* gpsColumn_accuracy = "accuracy";
-	static const char* gpsColumn_altitude = "altitude";
-	static const char* gpsColumn_speed    = "speed";
+	static const char* gpsColumn_address    = "address";
 
 	GpsDB::GpsDB()
 	{
@@ -25,11 +24,9 @@ namespace DB
 
 	bool GpsDB::QueryGpsInfo( const char* user ,Common::GpsInfo& gps)
 	{
-		char gpsTable[64] = {0};
 		char sqlstmt[256] = {0};
-		char* tablename = UserDB::QueryGpsTableName(user , gpsTable);
-		sprintf(sqlstmt , "SELECT TOP 1 * FROM `%s` ORDER BY `%s` DESC" ,
-			gpsTable , gpsColumn_id);
+		sprintf(sqlstmt , "SELECT * FROM `%s` WHERE `%s`='%s'" ,
+			gpsTable , gpsColumn_user ,user);
 	
 		mysql_real_query(MySqlDB::GetInstance().getMysql(), sqlstmt , strlen(sqlstmt));
 		MYSQL_RES* res = mysql_store_result(MySqlDB::GetInstance().getMysql());
@@ -53,17 +50,9 @@ namespace DB
 			{
 				gps.Longitude = atoi(row[i]);
 			}
-			else if(strcmp(gpsColumn_latitude , res->fields[i].name))
+			else if(strcmp(gpsColumn_address , res->fields[i].name))
 			{
-				gps.Altitude = atoi(row[i]);
-			}
-			else if(strcmp(gpsColumn_accuracy , res->fields[i].name))
-			{
-				gps.Accuracy = atoi(row[i]);
-			}	
-			else if(strcmp(gpsColumn_speed , res->fields[i].name))
-			{
-				gps.Speed = atoi(row[i]);
+				gps.Address = row[i];
 			}
 		}
 		mysql_free_result(res);
@@ -75,16 +64,12 @@ namespace DB
 		char sqlstmt[512] = {0};
 		sprintf(sqlstmt,"CREATE  TABLE buddy.%s (\
 			`%s` INT NOT NULL AUTO_INCREMENT,\
-			`%s` VARCHAR(45) NOT NULL,\
 			`%s` BIGINT NOT NULL,\
 			`%s` INT NOT NULL,\
 			`%s` INT NOT NULL,\
-			`%s` INT NOT NULL,\
-			`%s` INT NOT NULL,\
-			`%s` INT NOT NULL,\
 			PRIMARY KEY (id))\
-			DEFAULT charset = utf8",getTableName(user,tableName),gpsColumn_id , gpsColumn_user ,gpsColumn_utcTime,
-			gpsColumn_latitude , gpsColumn_longitude , gpsColumn_accuracy ,gpsColumn_altitude , gpsColumn_speed);
+			DEFAULT charset = utf8",
+			getTableName(user,tableName),gpsColumn_id  ,gpsColumn_utcTime,gpsColumn_latitude , gpsColumn_longitude);
 		MYSQL* db = MySqlDB::GetInstance().getMysql();
 		mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
 		return tableName;
@@ -95,14 +80,33 @@ namespace DB
 		char sqlstmt[512] = {0};
 		char tablename[256]={0};
 		getTableName(user,tablename);
-		sprintf(sqlstmt,"INSERT INTO `%s` (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) \
-			VALUES('%s','%lld','%d','%d','%d','%d','%d')",
-			tablename , gpsColumn_user ,gpsColumn_utcTime ,gpsColumn_latitude , gpsColumn_longitude,
-			gpsColumn_accuracy , gpsColumn_altitude ,gpsColumn_speed,
-			user,gps.utcTime ,gps.Latitude,gps.Longitude,gps.Accuracy,gps.Altitude,gps.Speed);
 
 		MYSQL* db = MySqlDB::GetInstance().getMysql();
+		sprintf(sqlstmt , "SELECT * FROM `%s` WHERE `%s`='%s'",gpsTable,gpsColumn_user,user);
 		mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
+		MYSQL_RES* res = mysql_store_result(db);
+		if(!res || !res->row_count)
+		{
+			sprintf(sqlstmt,"INSERT INTO `%s` (`%s`,`%s`,`%s`,`%s`,`%s`)\
+					VALUES('%s','%lld','%d','%d','%s')",
+				gpsTable , gpsColumn_user ,gpsColumn_utcTime ,gpsColumn_latitude , gpsColumn_longitude,gpsColumn_address,
+			user,gps.utcTime ,gps.Latitude,gps.Longitude,gps.Address.C_String());
+			mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
+		}
+		else
+		{
+			sprintf(sqlstmt,"UPDATE `%s` SET `%s` = '%lld',`%s` = '%d',`%s` = '%d',`%s` = '%s' \
+							WHERE `%s`='%s'",
+							gpsTable ,gpsColumn_utcTime ,gps.utcTime,gpsColumn_latitude , gps.Latitude,
+							gpsColumn_longitude,gps.Longitude,gpsColumn_address,gps.Address.C_String(),gpsColumn_user,user);
+			mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
+		}
+		mysql_free_result(res);
+
+		sprintf(sqlstmt,"INSERT INTO `%s` (`%s`,`%s`,`%s`) VALUES('%lld','%d','%d')",
+			tablename , gpsColumn_utcTime ,gpsColumn_latitude ,gpsColumn_longitude , gps.utcTime , gps.Latitude,gps.Longitude);
+		mysql_real_query(db ,sqlstmt ,strlen(sqlstmt));
+
 	}
 
 	char* GpsDB::getTableName( const char* user ,char* tableName )

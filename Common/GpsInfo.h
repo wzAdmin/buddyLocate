@@ -22,6 +22,10 @@ namespace Common
 		int  Accuracy;
 		int  Altitude;
 		int  Speed;
+		/************************************************************************/
+		/* µÿ÷∑utf8                                                             */
+		/************************************************************************/
+		RakNet::RakString Address;
 	}GpsInfo;
 }
 namespace RakNet
@@ -35,6 +39,7 @@ namespace RakNet
 		Write(gps.Accuracy);
 		Write(gps.Altitude);
 		Write(gps.Speed);
+		Write(gps.Address);
 	}
 
 	template<>
@@ -45,6 +50,7 @@ namespace RakNet
 			Read(gps.Latitude)&&\
 			Read(gps.Accuracy)&&\
 			Read(gps.Altitude)&&\
-			Read(gps.Speed);
+			Read(gps.Speed)&&\
+			Read(gps.Address);
 	}
 }

@@ -67,7 +67,8 @@ namespace Net
 		{
 		case ID_CONNECTION_ATTEMPT_FAILED:
 			LOG_Trace(LOG_INFO,"Login","can not connect to server\n");
-			MainClient::Instance().mCallBack->OnLoginReulst(LGE_cannotconnect);
+			if(MainClient::Instance().mCallBack)
+				MainClient::Instance().mCallBack->OnLoginReulst(LGE_cannotconnect);
 			break;
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 			mServerAdd = pack->systemAddress;

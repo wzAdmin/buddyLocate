@@ -1,5 +1,7 @@
 package com.wzAdmin.buddy;
 
+import java.util.List;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
@@ -7,13 +9,17 @@ import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.SupportMapFragment;
+import com.amap.api.search.core.AMapException;
+import com.amap.api.search.geocoder.Geocoder;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +32,8 @@ LocationSource, AMapLocationListener {
 	private AMap aMap;
 	private OnLocationChangedListener mListener;
 	private LocationManagerProxy mAMapLocationManager;
-	
+	private Geocoder coder;
+	AMapLocation mlocation;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +45,8 @@ LocationSource, AMapLocationListener {
 	 * 初始化AMap对象
 	 */
 	private void init() {
+		if ( null == coder)
+			coder = new Geocoder(this);
 		if (aMap == null) {
 			aMap = ((SupportMapFragment) getSupportFragmentManager()
 					.findFragmentById(R.id.map)).getMap();
@@ -87,9 +96,27 @@ LocationSource, AMapLocationListener {
 		// TODO Auto-generated method stub
 		if(mListener != null)
 			mListener.onLocationChanged(arg0);
-		this.UploadGps(arg0.getTime(), (int)(arg0.getLatitude()*1000000),(int) (arg0.getLongitude() * 1000000),
-				(int)arg0.getAccuracy(), (int)arg0.getAltitude(), (int)arg0.getSpeed());
+		mlocation = arg0;
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				try {
+					List<Address> address = coder
+							.getFromLocation(mlocation.getLatitude(), mlocation.getLongitude(), 3);
+					if (address != null && address.size() > 0) {
+						Address addres = address.get(0);
+						String addressName = addres.getAdminArea()
+								+ addres.getSubLocality()
+								+ addres.getFeatureName();
+						UploadGps(mlocation.getTime(), (int)(mlocation.getLatitude()*1000000),(int) (mlocation.getLongitude() * 1000000),
+								(int)mlocation.getAccuracy(), (int)mlocation.getAltitude(), (int)mlocation.getSpeed() , addressName);
+					}
+				} catch (AMapException e) {
+					Log.i("AddressER", e.toString());
+				}
 
+			}
+		});
+		t.start();
 	}
 
 	@Override
@@ -196,5 +223,5 @@ LocationSource, AMapLocationListener {
 	        System.exit(0);  
 	    }  
 	
-	private native void UploadGps(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed);
+	private native void UploadGps(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed,String address);
 }
