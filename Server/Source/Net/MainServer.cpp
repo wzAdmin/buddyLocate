@@ -41,6 +41,14 @@ namespace Net
 
 	void MainServer::Update( RakNet::Packet* pack )
 	{
+		switch(pack->data[0])
+		{
+		case ID_DISCONNECTION_NOTIFICATION:
+		case ID_CONNECTION_LOST:
+			printf("%s Logout\n",pack->systemAddress.ToString());
+			mUserTable->Remove(pack->guid);
+			break;
+		}
 		if(pack->data[0] >= Common::NETMSG_BEGIN && pack->data[0] < Common::NETMSG_END)
 		{
 			Common::Action* ac = mAcCreater->CreateAction(Common::NetMessage(pack->data[0]) ,

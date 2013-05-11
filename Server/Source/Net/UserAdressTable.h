@@ -22,6 +22,7 @@ namespace Net
 		RakNet::RakNetGUID GetUserNetGUID(RakNet::RakString userid);
 		void AddUser(RakNet::RakString userid , const RakNet::SystemAddress& address);
 		const char* GetUser(const RakNet::RakNetGUID& guid);
+		void Remove(const RakNet::RakNetGUID& guid);
 	private:
 		RakNet::RakPeerInterface* mPeer;
 		std::map<RakNet::RakString ,int> mUserAdress;

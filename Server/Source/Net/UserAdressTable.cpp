@@ -54,4 +54,17 @@ namespace Net
 			
 	}
 
+	void UserAdressTable::Remove( const RakNet::RakNetGUID& guid )
+	{
+		Common::AutoMutex automutex(&mMutex);
+		RakNet::RakString user = GetUser(guid);
+		UserIt it = mUserAdress.find(user);
+		if(mUserAdress.end()!=it)
+			mUserAdress.erase(it);
+
+		GUIDIt git = mGUIDtoUser.find(guid);
+		if(mGUIDtoUser.end() != git)
+			mGUIDtoUser.erase(git);
+	}
+
 }
