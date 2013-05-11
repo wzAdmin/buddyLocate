@@ -21,9 +21,9 @@ namespace Net
 				bd.gps.utcTime = -1;
 			bd.userAddress = MainServer::Instance().GetUserAdressTable()->GetUserAdress(bd.userid);
 			bd.NetGuid = MainServer::Instance().GetUserAdressTable()->GetUserNetGUID(bd.userid);
+			rebds.Buddies.push_back(bd);
 		}
 		RakNet::BitStream bst;
-		rebds.Buddies.push_back(bd);
 		rebds.ToBitStream(bst);
 		mPeer->Send(&bst ,MEDIUM_PRIORITY,RELIABLE_ORDERED,0,mpket->systemAddress,false);
 	}

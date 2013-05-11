@@ -22,6 +22,9 @@
     <Filter Include="Net\Action">
       <UniqueIdentifier>{4a4ab4cb-8bad-45a1-991b-a901967b4b28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="paltform">
+      <UniqueIdentifier>{c0de5d08-ac2e-4b92-b8a9-e78df5511f6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Common\CommonType.h">
@@ -67,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="..\Source\Net\MainClient.cpp">
       <Filter>Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Action_windows.cpp">
+      <Filter>paltform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

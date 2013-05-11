@@ -179,7 +179,7 @@ namespace Common
 			bst.IgnoreBytes(1);
 			Buddy bd;
 			bst.Read(BuddyCount);
-			for (unsigned int i  =0; i < 1 ; i++)
+			for (unsigned int i  =0; i < BuddyCount ; i++)
 			{
 				bst.Read(bd.userid);
 				bst.Read(bd.gps);

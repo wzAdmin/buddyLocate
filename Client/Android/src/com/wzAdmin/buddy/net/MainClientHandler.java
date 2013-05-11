@@ -16,6 +16,9 @@ import android.util.Log;
  * 
  */
 public class MainClientHandler extends Handler {
+	static {
+		System.loadLibrary("Client");
+	}
 	Context mContext;
 	static MainClientHandler mInstance = null;
 	private MainClientHandler(Context context){

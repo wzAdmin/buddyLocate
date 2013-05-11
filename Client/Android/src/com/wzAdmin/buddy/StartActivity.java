@@ -2,6 +2,7 @@ package com.wzAdmin.buddy;
 
 import com.wzAdmin.buddy.net.LoginHandler;
 import com.wzAdmin.buddy.net.LoginHelper;
+import com.wzAdmin.buddy.net.MainClientHandler;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -24,6 +25,7 @@ public class StartActivity extends Activity {
 		setContentView(R.layout.login);
 		msghandler = new LoginHandler(this);
 		mhelper = new LoginHelper(msghandler);
+		MainClientHandler.initInatance(this);
 	}
 
 	@Override

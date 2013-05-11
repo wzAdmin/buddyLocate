@@ -15,6 +15,7 @@ namespace Net
 		~AcGetBuddies(void){}
 	private:
 		virtual void doWork();
+		void PlatformWork(const Common::REGetBuddies& buddys);
 		virtual Common::NetMessage GetMessageID() {return Common::NETMSG_GETBUDDIES;}
 	};
 }

@@ -52,7 +52,8 @@ namespace DB
 		MYSQL_RES* res = mysql_store_result(db);
 		if(res && res->row_count)
 		{
-			memcpy(tableName , res->row[0] ,strlen(res->row[0]));
+			MYSQL_ROW row = mysql_fetch_row(res);
+			memcpy(tableName , row[0] ,strlen(row[0]));
 			mysql_free_result(res);
 			return tableName;
 		}
@@ -74,7 +75,8 @@ namespace DB
 		MYSQL_RES* res = mysql_store_result(db);
 		if(res && res->row_count)
 		{
-			memcpy(tableName , res->row[0] ,strlen(res->row[0]));
+			MYSQL_ROW row = mysql_fetch_row(res);
+			memcpy(tableName , row[0] ,strlen(row[0]));
 			mysql_free_result(res);
 			return tableName;
 		}

@@ -101,6 +101,7 @@
     <ClCompile Include="..\Source\Net\Action\AcMainLogin.cpp" />
     <ClCompile Include="..\Source\Net\LoginHelper.cpp" />
     <ClCompile Include="..\Source\Net\MainClient.cpp" />
+    <ClCompile Include="Action_windows.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
