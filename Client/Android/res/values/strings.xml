@@ -14,5 +14,10 @@
     <string name="pswd">密码</string>
     <string name="repswd">重复密码</string>
     <string name="contacts">我的联系人</string>
+    <string name="action_exit">退出</string>
+    <string name="confirm">你确定要退出吗</string>
+    <string name="menu">菜单</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>    
 
 </resources>

@@ -28,6 +28,7 @@ namespace Common
 		NETMSG_GETBUDDIES,
 		NETMSG_GETADRESS,
 		NETMSG_SENDCONTACTS,
+		NETMSG_BUDDYLOCATION,
 
 		NETMSG_END,
 	};
@@ -246,4 +247,24 @@ namespace Common
 		}
 		std::vector<RakNet::RakString> Contacts;
 	}SendContacts;
+
+	typedef struct _BuddyLocation
+	{
+		_BuddyLocation(){}
+		_BuddyLocation(unsigned char* data , unsigned int len)
+		{
+			BitStream bst(data , len , false);
+			bst.IgnoreBytes(1);
+			bst.Read(userid);
+			bst.Read(gps);
+		}
+		void ToBitStream(BitStream& bst)
+		{
+			bst.Write((unsigned char)NETMSG_BUDDYLOCATION);
+			bst.Write(userid);
+			bst.Write(gps);
+		}
+		RakString userid;
+		GpsInfo gps;
+	}BuddyLocation;
 }

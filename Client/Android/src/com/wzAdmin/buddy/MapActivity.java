@@ -8,10 +8,15 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.SupportMapFragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -103,6 +108,93 @@ LocationSource, AMapLocationListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		///getMenuInflater().inflate(R.menu.main, menu);
+		//return true;
+        menu.add(0, 0, 0, R.string.menu);  
+        menu.add(0, 1, 1, R.string.action_exit); 
+        return super.onCreateOptionsMenu(menu);  
+	}
+	@Override  
+    public boolean onOptionsItemSelected(MenuItem item)  
+    {  
+        // TODO Auto-generated method stub  
+        super.onOptionsItemSelected(item);  
+        switch (item.getItemId())  
+        {  
+            case 0:  
+                promoteToExit();  
+                break;  
+            default:  
+                break;  
+        }  
+        return true;  
+    }  
+	
+	private void promoteToExit()  
+    {  
+        new AlertDialog.Builder(this).setTitle(R.string.menu).setMessage(  
+        		R.string.menu).setNegativeButton(R.string.yes,  
+                new DialogInterface.OnClickListener()  
+                {  
+  
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which)  
+                    {  
+                        // TODO Auto-generated method stub  
+  
+                    }  
+                }).show();  
+    } 
+	
+	@Override 
+	//后台运行方法1
+	public boolean onKeyDown(int keyCode, KeyEvent event){
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			moveTaskToBack(true);
+			return true;
+		}else if(keyCode == KeyEvent.KEYCODE_MENU){
+			exitSystem();  
+			return true;
+		}
+			return super.onKeyDown(keyCode, event);
+	}
+
+	public void exitSystem()  
+    {  
+        new AlertDialog.Builder(this).setTitle(R.string.action_exit).setMessage(  
+        		R.string.confirm).setPositiveButton(R.string.yes,  
+                new DialogInterface.OnClickListener()  
+                {  
+  
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which)  
+                    {  
+                        // TODO Auto-generated method stub  
+                        finish();  
+                    }  
+                }).setNegativeButton(R.string.no,  
+                new DialogInterface.OnClickListener()  
+                {  
+  
+                    @Override  
+                    public void onClick(DialogInterface dialog, int which)  
+                    {  
+                        // TODO Auto-generated method stub  
+  
+                    }  
+                }).show();  
+    } 
+	
+	  protected void onDestroy()  
+	    {  
+	        // TODO Auto-generated method stub  
+	        android.os.Process.killProcess(android.os.Process.myPid());  
+	        System.exit(0);  
+	    }  
 	
 	private native void UploadGps(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed);
 }

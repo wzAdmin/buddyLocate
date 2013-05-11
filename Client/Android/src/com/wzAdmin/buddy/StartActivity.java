@@ -6,11 +6,13 @@ import com.wzAdmin.buddy.net.MainClientHandler;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StartActivity extends Activity {
 	final static int InLogin = 0;
@@ -18,6 +20,7 @@ public class StartActivity extends Activity {
 	LoginHandler msghandler;
 	LoginHelper mhelper;
 	int mInwhich;
+	private long mExitTime;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,6 +38,25 @@ public class StartActivity extends Activity {
 		return true;
 	}
 	
+	/* click twice back to exit app
+	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                    Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                    mExitTime = System.currentTimeMillis();
+
+            } else {
+    	        android.os.Process.killProcess(android.os.Process.myPid());  
+    	        System.exit(0);  
+            }
+            return true;
+    }		
+		return super.onKeyDown(keyCode, event);
+	}
+
 	@Override
 	public void onContentChanged(){
 		super.onContentChanged();
