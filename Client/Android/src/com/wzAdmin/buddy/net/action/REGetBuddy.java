@@ -4,6 +4,7 @@ package com.wzAdmin.buddy.net.action;
 import android.util.Log;
 
 import com.wzAdmin.buddy.net.datatype.Buddy;
+import com.wzAdmin.buddy.utils.BuddyLocationManager;
 
 
 /**
@@ -22,6 +23,8 @@ public class REGetBuddy implements IAction {
 	public void doWrok() {
 		// TODO 获取到好友信息后的具体操作
 		Log.i("Buddy","BuddyCount:" + mbuddies.length);
+		for(int i =0 ;i < mbuddies.length ; i ++)
+			BuddyLocationManager.getInstance().BuddyLocationChangeed(mbuddies[i]);
 	}
 	
 }

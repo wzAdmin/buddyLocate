@@ -66,8 +66,8 @@ LocationSource, AMapLocationListener ,IBuddyLocationlistener ,OnMarkerClickListe
 		AddBuddy(bd);
 	}
 	public void AddBuddy(Buddy bd){
-		MarkerOptions marker = mBuddyOnMap.get(bd.userid);
 		if(-1 == bd.gps.utcTime)return;
+		MarkerOptions marker = mBuddyOnMap.get(bd.userid);
 		if(null != marker){
 			LatLng pos = new LatLng(bd.gps.Latitude , bd.gps.Longitude);
 			marker.position(pos).title("1234")

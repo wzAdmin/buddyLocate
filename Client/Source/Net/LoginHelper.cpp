@@ -127,6 +127,8 @@ namespace Net
 		}
 		if(MainClient::Instance().mCallBack)
 			MainClient::Instance().mCallBack->OnLoginReulst(LoginError(err));
+		mServer->CloseConnection(pack->guid,true);
+		mConnected = false;
 	}
 
 	void LoginHelper::OnRegisterDone(  const RakNet::Packet* pack )
@@ -152,6 +154,8 @@ namespace Net
 		}
 		if(MainClient::Instance().mCallBack)
 			MainClient::Instance().mCallBack->OnRegisterResult(LoginError(err));
+		mServer->CloseConnection(pack->guid,true);
+		mConnected = false;
 	}
 }
 
