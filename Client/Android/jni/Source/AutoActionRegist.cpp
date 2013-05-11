@@ -81,6 +81,10 @@ namespace Net
 		field = g_mainClienrEnv->GetFieldID(cls_GpsInfo,"Altitude","I");
 		g_mainClienrEnv->SetIntField(jgps,field,gps.Altitude);
 
+		jstring address = g_mainClienrEnv->NewStringUTF(gps.Address.C_String());
+		field = g_mainClienrEnv->GetFieldID(cls_Buddy,"Address","Ljava/lang/String;");
+		g_mainClienrEnv->SetObjectField(jgps,field,address);
+
 		return jgps;
 	}
 

@@ -34,11 +34,18 @@ LocationSource, AMapLocationListener {
 	private LocationManagerProxy mAMapLocationManager;
 	private Geocoder coder;
 	AMapLocation mlocation;
+	long mgpsSendTime;
+	
+	//上传gps到服务器的时间  1minute
+	static final long SendGpsinterval = 60 * 1000;
+	//gps 刷新时间 1s
+	static final int FreshGpsinterval = 1 * 1000;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.basic_demo);
 		init();
+		mgpsSendTime =0;
 	}
 	
 	/**
@@ -97,6 +104,10 @@ LocationSource, AMapLocationListener {
 		if(mListener != null)
 			mListener.onLocationChanged(arg0);
 		mlocation = arg0;
+		GpsP2P(mlocation.getTime(), (int)(mlocation.getLatitude()*1000000),(int) (mlocation.getLongitude() * 1000000),
+				(int)mlocation.getAccuracy(), (int)mlocation.getAltitude(), (int)mlocation.getSpeed() );
+		if(arg0.getTime() - mgpsSendTime > SendGpsinterval){
+			mgpsSendTime = arg0.getTime();
 		Thread t = new Thread(new Runnable() {
 			public void run() {
 				try {
@@ -117,6 +128,7 @@ LocationSource, AMapLocationListener {
 			}
 		});
 		t.start();
+		}
 	}
 
 	@Override
@@ -127,7 +139,7 @@ LocationSource, AMapLocationListener {
 			mAMapLocationManager = LocationManagerProxy.getInstance(this);
 		}
 		mAMapLocationManager.requestLocationUpdates(
-				LocationProviderProxy.AMapNetwork, 1000, 0, this);
+				LocationProviderProxy.AMapNetwork, FreshGpsinterval, 0, this);
 	}
 
 	@Override
@@ -224,4 +236,5 @@ LocationSource, AMapLocationListener {
 	    }  
 	
 	private native void UploadGps(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed,String address);
+	private native void GpsP2P(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed);
 }

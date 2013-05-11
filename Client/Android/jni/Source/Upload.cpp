@@ -12,6 +12,11 @@
 #include "Trace.h"
 #include <stdlib.h>
 
+
+extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_GpsP2P(JNIEnv *env, jobject obj ,
+		jlong utcTime ,jint Latitude ,jint Longitude,jint Accuracy,jint Altitude ,jint Speed)
+{
+}
 extern "C" JNIEXPORT void JNICALL Java_com_wzAdmin_buddy_MapActivity_UploadGps(JNIEnv *env, jobject obj ,
 		jlong utcTime ,jint Latitude ,jint Longitude,jint Accuracy,jint Altitude ,jint Speed,jstring address)
 {

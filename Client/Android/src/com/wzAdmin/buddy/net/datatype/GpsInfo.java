@@ -7,4 +7,5 @@ public class GpsInfo {
 	public int Speed;
 	public int Accuracy;
 	public int Altitude;
+	public String Address;
 }
