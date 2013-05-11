@@ -10,8 +10,8 @@ namespace Net
 		Common::SendGps sendData;
 		sendData.location.Accuracy = 1;
 		sendData.location.Altitude = 2;
-		sendData.location.Latitude = 1999;
-		sendData.location.Longitude = 1999;
+		sendData.location.Latitude = 30658601;
+		sendData.location.Longitude = 104064855;
 		sendData.location.Speed = 111;
 		sendData.location.utcTime = 10000000;
 		RakNet::BitStream bst;

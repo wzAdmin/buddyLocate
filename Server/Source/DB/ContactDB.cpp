@@ -66,7 +66,7 @@ namespace DB
 		char tablename[256]={0};
 		getTableName(user,tablename);
 
-		sprintf(sqlstmt , "SELECT * FROM `%` WHERE `%s`='%'" , tablename ,Contactcolumn_friend ,friendid);
+		sprintf(sqlstmt , "SELECT * FROM `%s` WHERE `%s`='%s'" , tablename ,Contactcolumn_friend ,friendid);
 		mysql_real_query(MySqlDB::GetInstance().getMysql() ,sqlstmt ,strlen(sqlstmt));
 		MYSQL_RES* res = mysql_store_result(MySqlDB::GetInstance().getMysql());
 

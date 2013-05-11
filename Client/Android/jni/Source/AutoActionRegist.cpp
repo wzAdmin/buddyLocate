@@ -67,10 +67,10 @@ namespace Net
 		g_mainClienrEnv->SetLongField(jgps,field,gps.utcTime);
 
 		field = g_mainClienrEnv->GetFieldID(cls_GpsInfo,"Latitude","D");
-		g_mainClienrEnv->SetDoubleField(jgps,field,gps.Latitude);
+		g_mainClienrEnv->SetDoubleField(jgps,field,gps.Latitude/1000000.0);
 
 		field = g_mainClienrEnv->GetFieldID(cls_GpsInfo,"Longitude","D");
-		g_mainClienrEnv->SetDoubleField(jgps,field,gps.Longitude);
+		g_mainClienrEnv->SetDoubleField(jgps,field,gps.Longitude/1000000.0);
 
 		field = g_mainClienrEnv->GetFieldID(cls_GpsInfo,"Speed","I");
 		g_mainClienrEnv->SetIntField(jgps,field,gps.Speed);
@@ -82,8 +82,9 @@ namespace Net
 		g_mainClienrEnv->SetIntField(jgps,field,gps.Altitude);
 
 		jstring address = g_mainClienrEnv->NewStringUTF(gps.Address.C_String());
-		field = g_mainClienrEnv->GetFieldID(cls_Buddy,"Address","Ljava/lang/String;");
+		field = g_mainClienrEnv->GetFieldID(cls_GpsInfo,"Address","Ljava/lang/String;");
 		g_mainClienrEnv->SetObjectField(jgps,field,address);
+		g_mainClienrEnv->DeleteLocalRef(address);
 
 		return jgps;
 	}
@@ -99,7 +100,8 @@ namespace Net
 		jstring userid = g_mainClienrEnv->NewStringUTF(uftUserid);
 		field = g_mainClienrEnv->GetFieldID(cls_Buddy,"userid","Ljava/lang/String;");
 		g_mainClienrEnv->SetObjectField(jbuddy,field,userid);
-
+		g_mainClienrEnv->DeleteLocalRef(jgps);
+		g_mainClienrEnv->DeleteLocalRef(userid);
 		return jbuddy;
 	}
 	void SendToUIThread(jobject obj)
@@ -126,10 +128,13 @@ namespace Net
 		{
 			jobject jbuddy = CreateJavaBuddy(buddys.Buddies[i].gps , buddys.Buddies[i].userid.C_String());
 			g_mainClienrEnv->SetObjectArrayElement(javabuddies,i,jbuddy);
+			g_mainClienrEnv->DeleteLocalRef(jbuddy);
 		}
 		jfieldID fid = g_mainClienrEnv->GetFieldID(cls_REGetBuddy,"mbuddies","[Lcom/wzAdmin/buddy/net/datatype/Buddy;");
 		g_mainClienrEnv->SetObjectField(jregetbuddy,fid,javabuddies);
 		SendToUIThread(jregetbuddy);
+		g_mainClienrEnv->DeleteLocalRef(javabuddies);
+		g_mainClienrEnv->DeleteLocalRef(jregetbuddy);
 	}
 
 	void AcGetBuddyLocation::PlatformWork(const Common::BuddyLocation& bdl)
@@ -140,7 +145,6 @@ namespace Net
 
 		jfieldID fid = g_mainClienrEnv->GetFieldID(cls_ReciveLocation,"bd","Lcom/wzAdmin/buddy/net/datatype/Buddy;");
 		g_mainClienrEnv->SetObjectField(jReciveLocation,fid,jbuddy);
-
 		SendToUIThread(jReciveLocation);
 	}
 }

@@ -1,16 +1,26 @@
 package com.wzAdmin.buddy;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMap.OnMarkerClickListener;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.SupportMapFragment;
 import com.amap.api.search.core.AMapException;
 import com.amap.api.search.geocoder.Geocoder;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.wzAdmin.buddy.net.datatype.Buddy;
+import com.wzAdmin.buddy.utils.BuddyLocationManager;
+import com.wzAdmin.buddy.utils.IBuddyLocationlistener;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -28,7 +38,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MapActivity extends FragmentActivity implements 
-LocationSource, AMapLocationListener {
+LocationSource, AMapLocationListener ,IBuddyLocationlistener ,OnMarkerClickListener{
 	private AMap aMap;
 	private OnLocationChangedListener mListener;
 	private LocationManagerProxy mAMapLocationManager;
@@ -40,14 +50,41 @@ LocationSource, AMapLocationListener {
 	static final long SendGpsinterval = 60 * 1000;
 	//gps 刷新时间 1s
 	static final int FreshGpsinterval = 1 * 1000;
+	
+	Map<String , MarkerOptions> mBuddyOnMap;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.basic_demo);
 		init();
 		mgpsSendTime =0;
+		mBuddyOnMap = new HashMap< String , MarkerOptions >();
+		BuddyLocationManager.getInstance().addBudyyLocatioListner(this);
+	}	
+	@Override
+	public void OnBuddyLocationChange(Buddy bd) {
+		AddBuddy(bd);
 	}
-	
+	public void AddBuddy(Buddy bd){
+		MarkerOptions marker = mBuddyOnMap.get(bd.userid);
+		if(-1 == bd.gps.utcTime)return;
+		if(null != marker){
+			LatLng pos = new LatLng(bd.gps.Latitude , bd.gps.Longitude);
+			marker.position(pos).title("1234")
+			.snippet(bd.userid)
+			.icon(BitmapDescriptorFactory.defaultMarker());
+		}
+		else
+		{
+			LatLng pos = new LatLng(bd.gps.Latitude , bd.gps.Longitude);
+			marker = new MarkerOptions()
+			.position(pos).title("")
+			.snippet(bd.userid)
+			.icon(BitmapDescriptorFactory.defaultMarker());
+			aMap.addMarker(marker);
+			mBuddyOnMap.put(bd.userid, marker);
+		}
+	}
 	/**
 	 * 初始化AMap对象
 	 */
@@ -72,6 +109,7 @@ LocationSource, AMapLocationListener {
 				
 			});
 		}
+		aMap.setOnMarkerClickListener(this);
 	}
 
 	@Override
@@ -237,4 +275,10 @@ LocationSource, AMapLocationListener {
 	
 	private native void UploadGps(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed,String address);
 	private native void GpsP2P(long utcTime ,int Latitude ,int Longitude,int Accuracy,int Altitude ,int Speed);
+	@Override
+	public boolean onMarkerClick(Marker arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

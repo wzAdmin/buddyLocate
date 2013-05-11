@@ -4,6 +4,7 @@ package com.wzAdmin.buddy.net.action;
 import android.util.Log;
 
 import com.wzAdmin.buddy.net.datatype.Buddy;
+import com.wzAdmin.buddy.utils.BuddyLocationManager;
 
 /**
  * @ClassName: Recivebuddylocation
@@ -21,6 +22,7 @@ public class Recivebuddylocation implements IAction {
 	public void doWrok() {
 		// TODO 收到好友定位信息后的处理
 		Log.i("Buddy","ReciveBuddy,User:" + bd.userid + "Time:" + bd.gps.utcTime);
+		BuddyLocationManager.getInstance().BuddyLocationChangeed(bd);
 	}
 
 }
