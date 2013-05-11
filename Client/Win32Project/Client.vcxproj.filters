@@ -51,6 +51,9 @@
     <ClInclude Include="..\Source\Net\MainClient.h">
       <Filter>Net</Filter>
     </ClInclude>
+    <ClInclude Include="..\Source\Net\Action\AcGetBuddyLocation.h">
+      <Filter>Net\Action</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Net\LoginHelper.cpp">
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="Action_windows.cpp">
       <Filter>paltform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Net\Action\AcGetBuddyLocation.cpp">
+      <Filter>Net\Action</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -90,6 +90,7 @@
     <ClInclude Include="..\..\Common\CommonType.h" />
     <ClInclude Include="..\..\Common\GpsInfo.h" />
     <ClInclude Include="..\Source\Net\Action\AcGetBuddies.h" />
+    <ClInclude Include="..\Source\Net\Action\AcGetBuddyLocation.h" />
     <ClInclude Include="..\Source\Net\Action\AcMainLogin.h" />
     <ClInclude Include="..\Source\Net\LoginCallBack.h" />
     <ClInclude Include="..\Source\Net\LoginHelper.h" />
@@ -98,6 +99,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Common\Action.cpp" />
     <ClCompile Include="..\Source\Net\Action\AcGetBuddies.cpp" />
+    <ClCompile Include="..\Source\Net\Action\AcGetBuddyLocation.cpp" />
     <ClCompile Include="..\Source\Net\Action\AcMainLogin.cpp" />
     <ClCompile Include="..\Source\Net\LoginHelper.cpp" />
     <ClCompile Include="..\Source\Net\MainClient.cpp" />

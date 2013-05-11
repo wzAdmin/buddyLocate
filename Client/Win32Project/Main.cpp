@@ -10,7 +10,8 @@ int main()
 	Net::MainClient::Instance().GetACCreater()->Registe(Common::NETMSG_LOGINMAIN , &Net::AcMainLogin::Create);
 	Net::LoginHelper lh;
 	lh.Start(1);
-	lh.Login("123456","12");
+	lh.Login("18664876864","12");
+
 	char c;
 	while(c = getchar())
 	{
